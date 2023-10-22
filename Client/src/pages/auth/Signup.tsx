@@ -44,7 +44,9 @@ function Signup() {
 
     // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-
+    axios.post('http://localhost:3000/signup',values)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
     console.log(values)
   }
   return (
@@ -54,7 +56,7 @@ function Signup() {
           <img className='mx-auto w-16' src='./vite.svg'/>
         </div>
           <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
         <FormField
           control={form.control}
           name="name"

@@ -36,7 +36,9 @@ function Signin() {
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-
+    axios.post('localhost:3000',values)
+    .then(res=> console.log(res))
+    .catch(err=> console.log(err))
     console.log(values)
   }
   return (
