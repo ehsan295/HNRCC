@@ -1,4 +1,3 @@
-import React from 'react'
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import {useForm} from 'react-hook-form'
@@ -13,7 +12,8 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { useState } from "react"
 
 const formSchema = z.object({
   email:z.string().min(3, 'لطفا ایمیل را وارد کنید.').email('ابمبل نامعتبر.'),
@@ -25,21 +25,31 @@ const formSchema = z.object({
   
 
 function Signin() {
+const navigate = useNavigate()
+const [signinStatus, setSigninStatus] = useState()
+
       const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-    
       email:'',
       password:''
-
     },
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    axios.post('localhost:3000',values)
-    .then(res=> console.log(res))
+    axios.post('http://localhost:5000/api/v1/signin',values)
+    .then(res=> {
+      console.log(res.data)
+      if (res.data.message){
+        setSigninStatus(res.data.message)
+      }else{
+        setSigninStatus(res.data[0].name)
+        navigate('/crm')
+
+      }
+    })
     .catch(err=> console.log(err))
-    console.log(values)
+    
   }
   return (
     <div className="w-screen h-screen flex justify-center mx-auto items-center">
@@ -79,6 +89,9 @@ function Signin() {
         <Button className='w-full' type="submit">ورود</Button>
       </form>
     </Form>
+    <div>
+      <h3 className="font-medium text-red-500">{signinStatus}</h3>
+    </div>
   <div className="my-1">
   <Link className='hover:text-blue-800 active:text-indigo-800 font-medium' to='/signin'>حساب کاربری دارید؟</Link>
   </div>

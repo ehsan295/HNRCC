@@ -1,4 +1,3 @@
-import React from 'react'
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import {useForm} from 'react-hook-form'
@@ -9,12 +8,11 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormDescription,
   FormMessage
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 
 const formSchema = z.object({
   name: z.string().min(1,'لطفا نام را وارد کنید.').min(2,' نام باید حداقل ۲ نویسه باشد.').max(20, 'نام باید حداکثر ۲۰ نویسه باشد.'),
@@ -31,6 +29,7 @@ const formSchema = z.object({
   
 
 function Signup() {
+  const navigate= useNavigate()
       const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -44,10 +43,12 @@ function Signup() {
 
     // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    axios.post('http://localhost:3000/signup',values)
-    .then(res => console.log(res))
+    axios.post('http://localhost:5000/api/v1/signup',values)
+    .then(res =>
+      navigate('/sucess')
+      )
     .catch(err => console.log(err))
-    console.log(values)
+    
   }
   return (
     <div className="w-screen h-screen flex justify-center mx-auto items-center">
