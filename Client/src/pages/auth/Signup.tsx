@@ -54,7 +54,7 @@ function Signup() {
     <div className="w-screen h-screen flex justify-center mx-auto items-center">
        <div className='w-96 p-10 bg-slate-200 rounded-md space-y-8'>
         <div className=''>
-          <img className='mx-auto w-16' src='./vite.svg'/>
+          <img className='mx-auto w-16' src='./logo.svg'/>
         </div>
           <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
