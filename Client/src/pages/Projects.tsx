@@ -123,8 +123,8 @@ export default function DataTableDemo() {
   });
 
   return (
-    <div className="mx-10">
-      <h1>لیست پروژه ها</h1>
+    <div className="mx-10 mt-16">
+      <h1 className="font-bold text-2xl my-5">لیست پروژه ها</h1>
       <div className="flex items-center py-4">
         <Input
           placeholder="جستجوی پروژه ..."
