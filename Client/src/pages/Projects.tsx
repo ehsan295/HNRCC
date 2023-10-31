@@ -1,4 +1,6 @@
-import * as React from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -34,7 +36,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-const data: Payment[] = [
+const data: Project[] = [
   {
     id: "m5gr84i9",
     بودجه: 316,
@@ -67,93 +69,32 @@ const data: Payment[] = [
   },
 ];
 
-export type Payment = {
+export type Project = {
   id: string;
   بودجه: number;
   حالت: "درحال کار" | "تکمیل شده" | "ناموفق";
   پروژه: string;
 };
 
-export const columns: ColumnDef<Payment>[] = [
-  {
-    id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        checked={table.getIsAllPageRowsSelected()}
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
-  {
-    accessorKey: "پروژه",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          پروژه
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("پروژه")}</div>,
-  },
-  {
-    accessorKey: "حالت",
-    header: "حالت",
-    cell: ({ row }) => <div className="capitalize">{row.getValue("حالت")}</div>,
-  },
-
-  {
-    accessorKey: "بودجه",
-    header: () => <div className="text-right">بودجه</div>,
-    cell: ({ row }) => {
-      const بودجه = parseFloat(row.getValue("بودجه"));
-
-      return <div className="text-right font-medium">{بودجه}</div>;
-    },
-  },
-  {
-    id: "actions",
-    enableHiding: false,
-    cell: ({ row }) => {
-      const payment = row.original;
-
-      return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
-            >
-              ویرایش
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>حذف</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      );
-    },
-  },
-];
-
 export default function DataTableDemo() {
+  const navigate = useNavigate();
+  const accessToken = localStorage.getItem("token");
+  useEffect(() => {
+    if (accessToken == null) {
+      navigate("/signin");
+    } else {
+      const apiURL = "http://localhost:5000/api/v1";
+      const authAxios = axios.create({
+        baseURL: apiURL,
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      const getData = async () => {
+        const responce = await authAxios.get("/projects");
+      };
+    }
+  }, [accessToken]);
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -297,3 +238,82 @@ export default function DataTableDemo() {
     </div>
   );
 }
+
+export const columns: ColumnDef<Project>[] = [
+  {
+    id: "select",
+    header: ({ table }) => (
+      <Checkbox
+        checked={table.getIsAllPageRowsSelected()}
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        aria-label="Select all"
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        aria-label="Select row"
+      />
+    ),
+    enableSorting: false,
+    enableHiding: false,
+  },
+  {
+    accessorKey: "پروژه",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          پروژه
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => <div className="lowercase">{row.getValue("پروژه")}</div>,
+  },
+  {
+    accessorKey: "حالت",
+    header: "حالت",
+    cell: ({ row }) => <div className="capitalize">{row.getValue("حالت")}</div>,
+  },
+
+  {
+    accessorKey: "بودجه",
+    header: () => <div className="text-right">بودجه</div>,
+    cell: ({ row }) => {
+      const بودجه = parseFloat(row.getValue("بودجه"));
+
+      return <div className="text-right font-medium">{بودجه}</div>;
+    },
+  },
+  {
+    id: "actions",
+    enableHiding: false,
+    cell: ({ row }) => {
+      const Project = row.original;
+
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="h-8 w-8 p-0">
+              <span className="sr-only">Open menu</span>
+              <MoreHorizontal className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem
+              onClick={() => navigator.clipboard.writeText(Project.id)}
+            >
+              ویرایش
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>حذف</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      );
+    },
+  },
+];
