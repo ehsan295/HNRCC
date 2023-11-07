@@ -36,6 +36,16 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
+import { Label } from "@/components/ui/label";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 const data: Project[] = [
   {
     id: "m5gr84i9",
@@ -95,6 +105,12 @@ export default function DataTableDemo() {
       };
     }
   }, [accessToken]);
+
+  const navigateToCRM = () => {
+    // fetch data
+    navigate("/crm");
+  };
+
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -135,9 +151,9 @@ export default function DataTableDemo() {
           className="max-w-sm"
         />
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="mr-auto">
-              فیلتر <ChevronDown className="mr-2 h-4 w-4" />
+          <DropdownMenuTrigger asChild className="mr-5">
+            <Button variant="outline" className="">
+              فیلتر <ChevronDown className="mr-12 h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="start">
@@ -160,6 +176,39 @@ export default function DataTableDemo() {
               })}
           </DropdownMenuContent>
         </DropdownMenu>
+        <Dialog>
+          <DialogTrigger asChild className="mr-auto">
+            <Button variant="default">افزودن پروژه</Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[425px]">
+            <DialogHeader>
+              <DialogTitle>افزودن پروژه</DialogTitle>
+            </DialogHeader>
+            <div className="grid gap-4 py-4">
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="name" className="text-right">
+                  نام پروژه
+                </Label>
+                <Input id="name" defaultValue="" className="col-span-3" />
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="username" className="text-right">
+                  حالت
+                </Label>
+                <Input id="username" defaultValue="" className="col-span-3" />
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="username" className="text-right">
+                  بودجه
+                </Label>
+                <Input id="username" defaultValue="" className="col-span-3" />
+              </div>
+            </div>
+            <DialogFooter>
+              <Button type="submit">افزودن</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </div>
       <div className="rounded-md border py-3 px-6">
         <Table>
@@ -185,6 +234,8 @@ export default function DataTableDemo() {
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
+                  className="hover:cursor-pointer"
+                  onClick={navigateToCRM}
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
                 >
