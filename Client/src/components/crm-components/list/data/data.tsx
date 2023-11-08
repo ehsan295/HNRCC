@@ -3,38 +3,11 @@ import {
   ArrowRightIcon,
   ArrowUpIcon,
   CheckCircledIcon,
-  CircleIcon,
   CrossCircledIcon,
-  QuestionMarkCircledIcon,
   StopwatchIcon,
-} from "@radix-ui/react-icons"
-
-export const labels = [
-  {
-    value: "bug",
-    label: "Bug",
-  },
-  {
-    value: "feature",
-    label: "Feature",
-  },
-  {
-    value: "documentation",
-    label: "Documentation",
-  },
-]
+} from "@radix-ui/react-icons";
 
 export const statuses = [
-  {
-    value: "backlog",
-    label: "Backlog",
-    icon: QuestionMarkCircledIcon,
-  },
-  {
-    value: "todo",
-    label: "Todo",
-    icon: CircleIcon,
-  },
   {
     value: "in progress",
     label: "In Progress",
@@ -50,7 +23,7 @@ export const statuses = [
     label: "Canceled",
     icon: CrossCircledIcon,
   },
-]
+];
 
 export const priorities = [
   {
@@ -68,4 +41,4 @@ export const priorities = [
     value: "high",
     icon: ArrowUpIcon,
   },
-]
+];

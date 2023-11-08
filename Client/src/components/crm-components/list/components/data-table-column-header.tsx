@@ -38,9 +38,8 @@ export function DataTableColumnHeader<TData, TValue>({
           <Button
             variant="ghost"
             size="sm"
-            className="-ml-3 h-8 data-[state=open]:bg-accent"
+            className="-mr-3 h-8 data-[state=open]:bg-accent"
           >
-            <span>{title}</span>
             {column.getIsSorted() === "desc" ? (
               <ArrowDownIcon className="ml-2 h-4 w-4" />
             ) : column.getIsSorted() === "asc" ? (
@@ -48,21 +47,17 @@ export function DataTableColumnHeader<TData, TValue>({
             ) : (
               <CaretSortIcon className="ml-2 h-4 w-4" />
             )}
+            <span>{title}</span>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="start">
+        <DropdownMenuContent align="end">
           <DropdownMenuItem onClick={() => column.toggleSorting(false)}>
-            <ArrowUpIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
             Asc
+            <ArrowUpIcon className="ml-2 h-3.5 w-3.5 text-muted-foreground/70" />
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => column.toggleSorting(true)}>
-            <ArrowDownIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
             Desc
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={() => column.toggleVisibility(false)}>
-            <EyeNoneIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
-            Hide
+            <ArrowDownIcon className="ml-2 h-3.5 w-3.5 text-muted-foreground/70" />
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
