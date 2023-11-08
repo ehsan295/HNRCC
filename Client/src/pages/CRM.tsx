@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import CRMPage from "@/components/crm-components/page";
+
 function CRM() {
   const navigate = useNavigate();
   const accessToken = localStorage.getItem("token");
@@ -20,7 +22,11 @@ function CRM() {
       };
     }
   }, [accessToken]);
-  return <div>CRM</div>;
+  return (
+    <div>
+      <CRMPage />
+    </div>
+  );
 }
 
 export default CRM;

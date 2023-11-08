@@ -1,10 +1,9 @@
-import Signup from "./pages/auth/Signup";
-import Signin from "./pages/auth/Signin";
+import Signup from "./auth/Signup";
+import Signin from "./auth/Signin";
 import CRM from "./pages/CRM";
 import NotFound from "./pages/NotFound";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SucessSignup from "./pages/auth/SucessSignup";
-import Projects from "./pages/Projects";
+import SucessSignup from "./auth/SucessSignup";
 
 function App() {
   return (
@@ -13,7 +12,6 @@ function App() {
         <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Signup />} />
         <Route path="/crm" element={<CRM />} />
-        <Route path="/projects" element={<Projects />} />
         <Route path="/sucess" element={<SucessSignup />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
