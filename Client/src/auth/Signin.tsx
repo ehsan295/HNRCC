@@ -22,6 +22,7 @@ import { Input } from "@/components/ui/input";
 import axios from "axios";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { ModeToggle } from "@/components/mode-toggle";
 
 const formSchema = z.object({
   email: z.string().min(3, "لطفا ایمیل را وارد کنید.").email("ابمبل نامعتبر."),
@@ -60,7 +61,8 @@ function Signin() {
       .catch((err) => console.log(err));
   }
   return (
-    <div className="w-screen h-screen flex justify-center mx-auto items-center">
+    <div className="w-screen h-screen flex justify-center mx-auto items-center flex-col gap-4">
+      <ModeToggle />
       <Card className="w-96">
         <div className="mt-6">
           <img className="mx-auto w-28 h-28" src="./logo.svg" />
