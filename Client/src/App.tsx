@@ -4,19 +4,24 @@ import CRM from "./pages/CRM";
 import NotFound from "./pages/NotFound";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SucessSignup from "./auth/SucessSignup";
+import { ThemeProvider } from "@/components/theme-provider";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="*" element={<NotFound />} />
-        <Route path="/" element={<Signup />} />
-        <Route path="/crm" element={<CRM />} />
-        <Route path="/sucess" element={<SucessSignup />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/signin" element={<Signin />} />
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider defaultTheme="dark" storageKey="ui-theme">
+      <>
+        <BrowserRouter>
+          <Routes>
+            <Route path="*" element={<NotFound />} />
+            <Route path="/" element={<Signup />} />
+            <Route path="/crm" element={<CRM />} />
+            <Route path="/sucess" element={<SucessSignup />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/signin" element={<Signin />} />
+          </Routes>
+        </BrowserRouter>
+      </>
+    </ThemeProvider>
   );
 }
 

@@ -8,12 +8,18 @@ export function Sidebar({ className }: SidebarProps) {
   return (
     <div className={cn("pb-12 w-1/5 border rounded-lg ml-4", className)}>
       <div className="space-y-4 py-4 ">
+        <div className="m-5">
+          <img src="/logo.svg" alt="" />
+          <h2 className="text-center font-bold text-lg">
+            شرکت ساختمانی و سرک سازی حمید نصیر
+          </h2>
+        </div>
         <div className="px-3 py-2">
           <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
             Discover
           </h2>
           <div className="space-y-1">
-            <Button variant="secondary" className="w-full justify-start">
+            <Button variant="secondary" className="w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -29,7 +35,7 @@ export function Sidebar({ className }: SidebarProps) {
               </svg>
               Listen Now
             </Button>
-            <Button variant="ghost" className="w-full justify-start">
+            <Button variant="ghost" className="w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -47,7 +53,7 @@ export function Sidebar({ className }: SidebarProps) {
               </svg>
               Browse
             </Button>
-            <Button variant="ghost" className="w-full justify-start">
+            <Button variant="ghost" className="w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -73,7 +79,7 @@ export function Sidebar({ className }: SidebarProps) {
             Library
           </h2>
           <div className="space-y-1">
-            <Button variant="ghost" className="w-full justify-start">
+            <Button variant="ghost" className="w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -92,7 +98,7 @@ export function Sidebar({ className }: SidebarProps) {
               </svg>
               Playlists
             </Button>
-            <Button variant="ghost" className="w-full justify-start">
+            <Button variant="ghost" className="w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -108,7 +114,7 @@ export function Sidebar({ className }: SidebarProps) {
               </svg>
               Songs
             </Button>
-            <Button variant="ghost" className="w-full justify-start">
+            <Button variant="ghost" className="w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -124,7 +130,7 @@ export function Sidebar({ className }: SidebarProps) {
               </svg>
               Made for You
             </Button>
-            <Button variant="ghost" className="w-full justify-start">
+            <Button variant="ghost" className="w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -140,7 +146,7 @@ export function Sidebar({ className }: SidebarProps) {
               </svg>
               Artists
             </Button>
-            <Button variant="ghost" className="w-full justify-start">
+            <Button variant="ghost" className="w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -159,11 +165,6 @@ export function Sidebar({ className }: SidebarProps) {
               Albums
             </Button>
           </div>
-        </div>
-        <div className="py-2">
-          <h2 className="relative px-7 text-lg font-semibold tracking-tight">
-            Playlists
-          </h2>
         </div>
       </div>
     </div>

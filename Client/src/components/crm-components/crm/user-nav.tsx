@@ -10,6 +10,7 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ModeToggle } from "@/components/mode-toggle";
 
 export function UserNav() {
   return (
@@ -22,6 +23,7 @@ export function UserNav() {
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
+      <ModeToggle />
       <DropdownMenuContent className="w-56" align="start" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
