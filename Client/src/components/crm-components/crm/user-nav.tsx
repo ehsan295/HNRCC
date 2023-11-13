@@ -30,35 +30,13 @@ export function UserNav() {
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
             <p className="text-sm font-medium text-right leading-none">
-              shadcn
+              احسان الله
             </p>
             <p className="text-xs leading-none text-right text-muted-foreground">
-              m@example.com
+              ehsanullah@gmail.com
             </p>
           </div>
         </DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <DropdownMenuShortcut className="mr-auto ml-0">
-              ⇧⌘P
-            </DropdownMenuShortcut>
-            Profile
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <DropdownMenuShortcut className="mr-auto ml-0">
-              ⌘B
-            </DropdownMenuShortcut>
-            Billing
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <DropdownMenuShortcut className="mr-auto ml-0">
-              ⌘S
-            </DropdownMenuShortcut>
-            Settings
-          </DropdownMenuItem>
-          <DropdownMenuItem>New Team</DropdownMenuItem>
-        </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           <DropdownMenuShortcut className="mr-auto ml-0">

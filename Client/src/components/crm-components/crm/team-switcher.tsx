@@ -45,23 +45,14 @@ import {
 
 const groups = [
   {
-    label: "Personal Account",
+    label: "لیست پروژه ها",
     teams: [
       {
-        label: "Alicia Koch",
-        value: "personal",
-      },
-    ],
-  },
-  {
-    label: "Teams",
-    teams: [
-      {
-        label: "Acme Inc.",
+        label: "پروژه دفتر مرکزی",
         value: "acme-inc",
       },
       {
-        label: "Monsters Inc.",
+        label: "پروژه کانال قوش تیپه.",
         value: "monsters",
       },
     ],
@@ -91,7 +82,7 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
             variant="outline"
             role="combobox"
             aria-expanded={open}
-            aria-label="Select a team"
+            aria-label="اضافه کردن پروژه"
             className={cn("w-[200px] justify-between", className)}
           >
             <Avatar className="ml-2 h-5 w-5">
@@ -154,7 +145,7 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
                     }}
                   >
                     <PlusCircledIcon className="ml-2 h-5 w-5" />
-                    Create Team
+                    اضافه کردن پروژه
                   </CommandItem>
                 </DialogTrigger>
               </CommandGroup>
@@ -164,7 +155,7 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
       </Popover>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Create team</DialogTitle>
+          <DialogTitle>اضافه کردن پروژه</DialogTitle>
           <DialogDescription>
             Add a new team to manage products and customers.
           </DialogDescription>

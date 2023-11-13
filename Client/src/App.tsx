@@ -5,7 +5,7 @@ import NotFound from "./pages/NotFound";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SucessSignup from "./auth/SucessSignup";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Sidebar } from "@/components/crm-components/crm/sidebar";
+
 import { Fragment } from "react";
 
 function App() {
@@ -19,9 +19,7 @@ function App() {
             <Route path="/sucess" element={<SucessSignup />} />
             <Route path="/" element={<Signup />} />
             <Route path="*" element={<NotFound />} />
-            <Fragment>
-              <Route path="/crm" element={<CRM />} />
-            </Fragment>
+            <Route path="/crm" element={<CRM />} />
           </Routes>
         </BrowserRouter>
       </>
