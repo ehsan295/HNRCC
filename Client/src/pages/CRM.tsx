@@ -2,6 +2,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import CRMPage from "@/components/crm-components/page";
+import { Sidebar } from "@/components/crm-components/crm/sidebar";
+import { UserNav } from "@/components/crm-components/crm/user-nav";
+import TopNav from "@/components/crm-components/crm/top-nav";
 
 function CRM() {
   const navigate = useNavigate();
@@ -17,14 +20,15 @@ function CRM() {
           Authorization: `Bearer ${accessToken}`,
         },
       });
-      const getData = async () => {
-        const responce = await authAxios.get("/projects");
-      };
     }
   }, [accessToken]);
   return (
     <div>
-      <CRMPage />
+      <TopNav />
+      <div className="flex">
+        <Sidebar />
+        <CRMPage />
+      </div>
     </div>
   );
 }

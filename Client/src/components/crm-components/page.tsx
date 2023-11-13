@@ -1,28 +1,15 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { MainNav } from "./crm/main-nav";
-import TeamSwitcher from "./crm/team-switcher";
-import { UserNav } from "./crm/user-nav";
-import { Sidebar } from "./crm/sidebar";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
+
 import TaskPage from "./list/page";
 
 export default function CRMPage() {
   return (
     <>
-      <div className="hidden flex-col md:flex">
-        <div className="border-b">
-          <div className="flex h-16 items-center px-8">
-            <TeamSwitcher />
-            <MainNav className="mx-6" />
-            <div className="mr-auto flex items-center space-x-4">
-              <UserNav />
-            </div>
-          </div>
-        </div>
-        <div className="flex-1 space-y-4 p-8 pt-6">
+      <div className="hidden flex-col md:flex w-4/5">
+        <div className="flex-1 space-y-4 p-4 pl-6 w-full">
           <Tabs defaultValue="overview" className="space-y-4" dir="rtl">
             <TabsContent value="overview" dir="rtl" className=" flex">
-              <Sidebar />
               <div className="flex flex-col w-full gap-4">
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                   <Card>
