@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
-
-import TaskPage from "../../pages/products/page";
+import TaskPage from "./list/page";
+import Tasks from "@/components/crm-components/list/data/tasks.json";
 
 export default function CRMPage() {
   return (
@@ -116,16 +116,7 @@ export default function CRMPage() {
                     </CardContent>
                   </Card>
                 </div>
-                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-12">
-                  <Card className="col-span-12">
-                    <CardHeader>
-                      <CardTitle>Overview</CardTitle>
-                    </CardHeader>
-                    <CardContent className="pl-2">
-                      <TaskPage />
-                    </CardContent>
-                  </Card>
-                </div>
+                <TaskPage data={Tasks} title="Overview" />
               </div>
             </TabsContent>
           </Tabs>

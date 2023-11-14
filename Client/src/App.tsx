@@ -1,14 +1,11 @@
 import Signup from "./pages/auth/Signup";
 import Signin from "./pages/auth/Signin";
-import CRM from "./pages/CRM";
-import NotFound from "./pages/NotFound";
 import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
-
 import { ThemeProvider } from "@/components/theme-provider";
 import TopNav from "./components/crm-components/crm/top-nav";
 import { Sidebar } from "./components/crm-components/crm/sidebar";
 import CRMPage from "./components/crm-components/page";
-import TaskPage from "./pages/products/page";
+import ProductPage from "./pages/products/ProductPage";
 
 function Layout() {
   return (
@@ -32,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/products",
-        element: <TaskPage />,
+        element: <ProductPage />,
       },
     ],
   },

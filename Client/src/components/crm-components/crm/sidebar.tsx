@@ -21,10 +21,33 @@ export function Sidebar({ className }: SidebarProps) {
           </h2>
           <div className="space-y-1">
             <Link
+              to="/"
+              className={buttonVariants({
+                variant: "ghost",
+                className: "w-full gap-3",
+              })}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+                />
+              </svg>
+              خانه
+            </Link>
+            <Link
               to="/products"
               className={buttonVariants({
-                variant: "secondary",
-                className: "w-full  gap-3",
+                variant: "ghost",
+                className: "w-full gap-3",
               })}
             >
               <svg
@@ -44,7 +67,13 @@ export function Sidebar({ className }: SidebarProps) {
               لیست محصولات
             </Link>
 
-            <Button variant="ghost" className="w-full justify-start gap-3">
+            <Link
+              to="/products"
+              className={buttonVariants({
+                variant: "ghost",
+                className: "w-full  gap-3",
+              })}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -60,8 +89,14 @@ export function Sidebar({ className }: SidebarProps) {
                 />
               </svg>
               ماشینری
-            </Button>
-            <Button variant="ghost" className="w-full justify-start gap-3">
+            </Link>
+            <Link
+              to="/products"
+              className={buttonVariants({
+                variant: "ghost",
+                className: "w-full  gap-3",
+              })}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -77,8 +112,14 @@ export function Sidebar({ className }: SidebarProps) {
                 />
               </svg>
               مصارف
-            </Button>
-            <Button variant="ghost" className="w-full justify-start gap-3">
+            </Link>
+            <Link
+              to="/products"
+              className={buttonVariants({
+                variant: "ghost",
+                className: "w-full  gap-3",
+              })}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -94,8 +135,14 @@ export function Sidebar({ className }: SidebarProps) {
                 />
               </svg>
               مشتریان
-            </Button>
-            <Button variant="ghost" className="w-full justify-start gap-3">
+            </Link>
+            <Link
+              to="/products"
+              className={buttonVariants({
+                variant: "ghost",
+                className: "w-full  gap-3",
+              })}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -111,8 +158,14 @@ export function Sidebar({ className }: SidebarProps) {
                 />
               </svg>
               لیست قرضه
-            </Button>
-            <Button variant="ghost" className="w-full justify-start gap-3">
+            </Link>
+            <Link
+              to="/products"
+              className={buttonVariants({
+                variant: "ghost",
+                className: "w-full  gap-3",
+              })}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -128,7 +181,7 @@ export function Sidebar({ className }: SidebarProps) {
                 />
               </svg>
               کارمندان
-            </Button>
+            </Link>
           </div>
         </div>
         <div className="px-3 py-2">
@@ -160,9 +213,12 @@ export function Sidebar({ className }: SidebarProps) {
             پروژه
           </h2>
           <div className="space-y-1">
-            <Button
-              variant="ghost"
-              className="w-full justify-start gap-3 bg-red-950 hover:bg-red-800 "
+            <Link
+              to="/products"
+              className={buttonVariants({
+                variant: "ghost",
+                className: "w-full  gap-3 bg-red-950 hover:bg-red-800",
+              })}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -179,7 +235,7 @@ export function Sidebar({ className }: SidebarProps) {
                 />
               </svg>
               حذف پروژه
-            </Button>
+            </Link>
           </div>
         </div>
       </div>

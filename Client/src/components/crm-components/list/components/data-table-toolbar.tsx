@@ -1,3 +1,5 @@
+"use client";
+
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { Table } from "@tanstack/react-table";
 
@@ -6,17 +8,6 @@ import { Input } from "@/components/ui/input";
 
 import { priorities, statuses } from "../data/data";
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-
-import { Label } from "@/components/ui/label";
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
@@ -29,14 +20,14 @@ export function DataTableToolbar<TData>({
 
   return (
     <div className="flex items-center justify-between">
-      <div className="flex flex-1 items-center space-x-2 ">
+      <div className="flex flex-1 items-center space-x-2">
         <Input
           placeholder="Filter tasks..."
           value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("title")?.setFilterValue(event.target.value)
           }
-          className="h-8 w-[150px] lg:w-[250px] ml-3"
+          className="h-8 w-[150px] lg:w-[250px]"
         />
         {table.getColumn("status") && (
           <DataTableFacetedFilter
@@ -63,46 +54,6 @@ export function DataTableToolbar<TData>({
           </Button>
         )}
       </div>
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button variant="default" size="sm">
-            Edit Profile
-          </Button>
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>Edit profile</DialogTitle>
-            <DialogDescription>
-              Make changes to your profile here. Click save when you're done.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="name" className="text-right">
-                Name
-              </Label>
-              <Input
-                id="name"
-                defaultValue="Pedro Duarte"
-                className="col-span-3"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="username" className="text-right">
-                Username
-              </Label>
-              <Input
-                id="username"
-                defaultValue="@peduarte"
-                className="col-span-3"
-              />
-            </div>
-          </div>
-          <DialogFooter>
-            <Button type="submit">Save changes</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
     </div>
   );
 }
