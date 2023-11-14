@@ -52,7 +52,7 @@ function Signin() {
         localStorage.setItem("token", res.data.token);
         if (res.data.message) {
           setSigninStatus(res.data.message);
-          navigate("/crm");
+          navigate("/");
           console.log(res);
         } else {
           setSigninStatus(res.data[0].name);

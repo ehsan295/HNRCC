@@ -1,39 +1,52 @@
 import Signup from "./pages/auth/Signup";
 import Signin from "./pages/auth/Signin";
-import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
-import TopNav from "./components/crm-components/crm/top-nav";
-import { Sidebar } from "./components/crm-components/crm/sidebar";
+
 import CRMPage from "./components/crm-components/page";
 import ProductPage from "./pages/products/ProductPage";
-import Cards from "./components/crm-components/crm/cards";
 
-function Layout() {
-  return (
-    <div>
-      <TopNav />
-      <div className="flex">
-        <Sidebar />
-        <div className="flex flex-col mt-6 mx-4 w-full">
-          <Cards />
-          <Outlet />
-        </div>
-      </div>
-    </div>
-  );
-}
+import Layout from "./Layout/Layout";
+import NotFound from "./pages/NotFound";
+import Machinery from "./pages/machinery/Machinery";
+import Expenses from "./pages/expenses/Expenses";
+import Employees from "./pages/employees/Employees";
+import Debts from "./pages/debts/Debts";
+import Customers from "./pages/customers/Customers";
+import ConfreanceRoom from "./pages/conferance-room/ConfreanceRoom";
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
     children: [
       {
-        path: "/",
-        element: <CRMPage />,
-      },
-      {
         path: "/products",
         element: <ProductPage />,
+      },
+      {
+        path: "/machinery",
+        element: <Machinery />,
+      },
+      {
+        path: "/expenses",
+        element: <Expenses />,
+      },
+      {
+        path: "/employees",
+        element: <Employees />,
+      },
+      {
+        path: "/debts",
+        element: <Debts />,
+      },
+      {
+        path: "/customers",
+        element: <Customers />,
+      },
+      {
+        path: "/conferance",
+        element: <ConfreanceRoom />,
       },
     ],
   },
@@ -45,6 +58,10 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <Signup />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 function App() {
