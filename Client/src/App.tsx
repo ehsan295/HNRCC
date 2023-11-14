@@ -1,28 +1,55 @@
-import Signup from "./auth/Signup";
-import Signin from "./auth/Signin";
+import Signup from "./pages/auth/Signup";
+import Signin from "./pages/auth/Signin";
 import CRM from "./pages/CRM";
 import NotFound from "./pages/NotFound";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SucessSignup from "./auth/SucessSignup";
+import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import { ThemeProvider } from "@/components/theme-provider";
+import TopNav from "./components/crm-components/crm/top-nav";
+import { Sidebar } from "./components/crm-components/crm/sidebar";
+import CRMPage from "./components/crm-components/page";
+import TaskPage from "./pages/products/page";
 
-import { Fragment } from "react";
+function Layout() {
+  return (
+    <div>
+      <TopNav />
+      <div className="flex">
+        <Sidebar />
+        <Outlet />
+      </div>
+    </div>
+  );
+}
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <CRMPage />,
+      },
+      {
+        path: "/products",
+        element: <TaskPage />,
+      },
+    ],
+  },
 
+  {
+    path: "/signin",
+    element: <Signin />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+  },
+]);
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="ui-theme">
-      <>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/signin" element={<Signin />} />
-            <Route path="/sucess" element={<SucessSignup />} />
-            <Route path="/" element={<Signup />} />
-            <Route path="*" element={<NotFound />} />
-            <Route path="/crm" element={<CRM />} />
-          </Routes>
-        </BrowserRouter>
-      </>
+      <RouterProvider router={router} />
     </ThemeProvider>
   );
 }

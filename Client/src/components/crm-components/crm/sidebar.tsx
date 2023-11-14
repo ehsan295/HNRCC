@@ -1,5 +1,7 @@
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
+
+import { Link } from "react-router-dom";
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -18,14 +20,20 @@ export function Sidebar({ className }: SidebarProps) {
             محصولات
           </h2>
           <div className="space-y-1">
-            <Button variant="secondary" className="w-full justify-start gap-3">
+            <Link
+              to="/products"
+              className={buttonVariants({
+                variant: "secondary",
+                className: "w-full  gap-3",
+              })}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="w-6 h-6 "
               >
                 <path
                   stroke-linecap="round"
@@ -34,7 +42,8 @@ export function Sidebar({ className }: SidebarProps) {
                 />
               </svg>
               لیست محصولات
-            </Button>
+            </Link>
+
             <Button variant="ghost" className="w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

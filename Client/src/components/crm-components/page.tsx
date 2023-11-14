@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 
-import TaskPage from "./list/page";
+import TaskPage from "../../pages/products/page";
 
 export default function CRMPage() {
   return (
