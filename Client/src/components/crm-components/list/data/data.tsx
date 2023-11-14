@@ -1,7 +1,4 @@
 import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  ArrowUpIcon,
   CheckCircledIcon,
   CrossCircledIcon,
   StopwatchIcon,

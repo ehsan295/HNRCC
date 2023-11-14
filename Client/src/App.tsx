@@ -21,6 +21,10 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
+        path: "/",
+        element: <CRMPage />,
+      },
+      {
         path: "/products",
         element: <ProductPage />,
       },
