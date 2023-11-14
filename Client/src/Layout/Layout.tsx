@@ -1,7 +1,7 @@
 import { Sidebar } from "@/components/crm-components/crm/sidebar";
 import TopNav from "@/components/crm-components/crm/top-nav";
-import CRMPage from "@/components/crm-components/page";
 import { Outlet } from "react-router-dom";
+import Cards from "@/components/crm-components/crm/cards";
 
 function Layout() {
   return (
@@ -9,6 +9,7 @@ function Layout() {
       <TopNav />
       <div className="flex">
         <Sidebar />
+        <Cards />
         <Outlet />
       </div>
     </div>

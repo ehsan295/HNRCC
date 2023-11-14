@@ -1,7 +1,6 @@
 import { columns } from "./components/columns";
 import { DataTable } from "./components/data-table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { taskSchema } from "./data/schema";
 export default function TaskPage({ data, title }) {
   return (
     <>

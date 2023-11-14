@@ -6,6 +6,7 @@ import TopNav from "./components/crm-components/crm/top-nav";
 import { Sidebar } from "./components/crm-components/crm/sidebar";
 import CRMPage from "./components/crm-components/page";
 import ProductPage from "./pages/products/ProductPage";
+import Cards from "./components/crm-components/crm/cards";
 
 function Layout() {
   return (
@@ -13,7 +14,10 @@ function Layout() {
       <TopNav />
       <div className="flex">
         <Sidebar />
-        <Outlet />
+        <div className="flex flex-col mt-6 mx-4 w-full">
+          <Cards />
+          <Outlet />
+        </div>
       </div>
     </div>
   );

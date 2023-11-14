@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import {
   CaretSortIcon,
@@ -99,8 +97,8 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
         <PopoverContent className="w-[200px] p-0">
           <Command>
             <CommandList>
-              <CommandInput placeholder="Search team..." className="pr-2" />
-              <CommandEmpty>No team found.</CommandEmpty>
+              <CommandInput placeholder="جستجوی پروژه ها" className="pr-2" />
+              <CommandEmpty>پروژه پیدا نشد</CommandEmpty>
               {groups.map((group) => (
                 <CommandGroup key={group.label} heading={group.label}>
                   {group.teams.map((team) => (

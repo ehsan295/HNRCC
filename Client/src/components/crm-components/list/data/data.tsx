@@ -10,35 +10,17 @@ import {
 export const statuses = [
   {
     value: "in progress",
-    label: "In Progress",
+    label: "درحال کار",
     icon: StopwatchIcon,
   },
   {
     value: "done",
-    label: "Done",
+    label: "انجام شده",
     icon: CheckCircledIcon,
   },
   {
     value: "canceled",
-    label: "Canceled",
+    label: "لغو شده",
     icon: CrossCircledIcon,
-  },
-];
-
-export const priorities = [
-  {
-    label: "Low",
-    value: "low",
-    icon: ArrowDownIcon,
-  },
-  {
-    label: "Medium",
-    value: "medium",
-    icon: ArrowRightIcon,
-  },
-  {
-    label: "High",
-    value: "high",
-    icon: ArrowUpIcon,
   },
 ];
