@@ -1,11 +1,10 @@
-import List from "@/components/crm-components/list/page";
-import Tasks from "@/components/crm-components/list/data/tasks.json";
-import { DialogFooter, DialogHeader } from "@/components/ui/dialog";
-import { DialogDescription, DialogTitle } from "@radix-ui/react-dialog";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-const Popup = () => {
+import { DialogFooter, DialogHeader } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { DialogDescription, DialogTitle } from "@radix-ui/react-dialog";
+import { Label } from "recharts";
+
+export default function Popup() {
   return (
     <>
       <DialogHeader>
@@ -33,18 +32,4 @@ const Popup = () => {
       </DialogFooter>
     </>
   );
-};
-function ProductPage() {
-  return (
-    <div className="w-full mt-4">
-      <List
-        data={Tasks}
-        buttonTitle="افزودن محصول"
-        cardTitle="لیست محصولات"
-        dialogContent={<Popup />}
-      />
-    </div>
-  );
 }
-
-export default ProductPage;
