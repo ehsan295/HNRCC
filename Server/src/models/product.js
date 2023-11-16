@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
 
-const Product = sequelize.define("product", {
+const product = sequelize.define("product", {
   productId: {
    type: DataTypes.INTEGER,
     allowNull: false,
@@ -51,4 +51,4 @@ product.belongsTo(project,
     foreignkey:'projectId'
   });
 
-module.exports = Product;
+module.exports = product;
