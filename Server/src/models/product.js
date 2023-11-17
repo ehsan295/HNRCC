@@ -1,21 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
 
-const product = sequelize.define("product", {
-  productId: {
-   type: DataTypes.INTEGER,
-    allowNull: false,
-    autoIncrement:true,
-    primaryKey:true,
-  },
-  date: {
-   type: DataTypes.DATE,
-    allowNull: false,
-  },
-  detail: {
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
+const Product = sequelize.define("product", {
   name: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -25,30 +11,37 @@ const product = sequelize.define("product", {
     allowNull: false,
   },
 
-volume: {
-  type: DataTypes.INTEGER,
-  allowNull: false,
-},
+  volume: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
   price: {
     type: DataTypes.INTEGER,
     allowNull: false,
+  },
+  date: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
+  detail: {
+    type: DataTypes.STRING,
+    allowNull: true,
   },
   picture: {
     type: DataTypes.STRING,
     allowNull: true,
   },
-    projectId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references:{
-        model:project,
-        key:'projectId'
-      }
+  projectId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: project,
+      key: "projectId",
     },
+  },
 });
-product.belongsTo(project,
-  {
-    foreignkey:'projectId'
-  });
+product.belongsTo(project, {
+  foreignkey: "projectId",
+});
 
-module.exports = product;
+module.exports = Product;
