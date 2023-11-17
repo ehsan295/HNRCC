@@ -3,34 +3,43 @@ const Product = require("../models/Product");
 
 const router = express.Router();
 
+// Create a new product
 router.post("/product", async (req, res) => {
-  const { name, unit, vloume, price, date, detail, picture, projectId } =
-    req.body;
-  const existedProduct = await Product.findOne({ where: { name } }).catch(
-    (err) => console.log(err)
-  );
-  if (existedProduct) {
-    return res.json({
-      message: "Product Already Exists",
+  try {
+    const { id, name, unit, volume, price, date, detail, picture, projectId } =
+      req.body;
+
+    // Check if the product with the given ID already exists
+    const existedProduct = await Product.findOne({ id });
+    if (existedProduct) {
+      return res.json({
+        message: "Product Already Exists",
+      });
+    }
+
+    // Create a new product
+    const newProduct = new Product({
+      name,
+      unit,
+      volume,
+      price,
+      date,
+      detail,
+      picture,
+      projectId,
     });
-  }
-  const newProduct = new Product({
-    name,
-    unit,
-    vloume,
-    price,
-    date,
-    detail,
-    picture,
-    projectId,
-  });
-  const savedProduct = await newProduct.save().catch((err) => {
-    console.log(err);
-    res.json({ error: "can not add product" });
-  });
-  if (savedProduct) {
+
+    // Save the new product
+    const savedProduct = await newProduct.save();
+
     res.json({
-      message: "works",
+      message: "Product added successfully",
+      product: savedProduct,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: "Internal Server Error",
     });
   }
 });
