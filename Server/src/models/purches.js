@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
 
-const purches = sequelize.define("purches", {
+const Purches = sequelize.define("purches", {
     purchesId: {
    type: DataTypes.INTEGER,
     allowNull: false,
@@ -57,5 +57,5 @@ purches.belongsTo(empolyee,
     });
 
 
-module.exports = purches;
+module.exports = Purches;
 

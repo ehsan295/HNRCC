@@ -91,7 +91,7 @@ export function DataTable<TData, TValue>({
               {buttonTitle}
             </Button>
           </DialogTrigger>
-          <DialogContent className="sm:max-w-[425px] ">
+          <DialogContent className="sm:max-w-[425px]">
             {dialogContent}
           </DialogContent>
         </Dialog>

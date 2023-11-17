@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
 
-const project = sequelize.define("project", {
+const Project = sequelize.define("project", {
   projectId: {
    type: DataTypes.INTEGER,
     allowNull: false,
@@ -23,4 +23,4 @@ const project = sequelize.define("project", {
 });
 
 
-module.exports = project;
+module.exports = Project;

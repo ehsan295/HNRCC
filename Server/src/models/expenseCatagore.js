@@ -2,7 +2,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
 
-const expense = sequelize.define("expense", {
+const ExpenseCatagore = sequelize.define("expenseCatagore", {
 expenseCatagoreid: {
    type: DataTypes.INTEGER,
     allowNull: false,
@@ -18,5 +18,5 @@ expenseCatagoreid: {
 });
 
 
-module.exports = expenseCatagore;
+module.exports = ExpenseCatagore;
 

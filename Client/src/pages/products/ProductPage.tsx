@@ -8,8 +8,8 @@ import { Label } from "@/components/ui/label";
 const Popup = () => {
   return (
     <>
-      <DialogHeader dir="rtl">
-        <DialogTitle>sdifousd</DialogTitle>
+      <DialogHeader>
+        <DialogTitle>Edit profile</DialogTitle>
         <DialogDescription>
           Make changes to your profile here. Click save when you're done.
         </DialogDescription>

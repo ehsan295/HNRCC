@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
 
-const customer = sequelize.define("customer", {
+const Customer = sequelize.define("customer", {
   customerId: {
    type: DataTypes.INTEGER,
     allowNull: false,
@@ -30,4 +30,4 @@ phoneNumber: {
 });
 
 
-module.exports = customer;
+module.exports = Customer;
