@@ -50,5 +50,5 @@ payment.belongsTo(customer,
     });
 
 
-module.exports = expense;
+module.exports = payment;
 
