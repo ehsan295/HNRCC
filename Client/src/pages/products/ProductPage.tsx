@@ -1,4 +1,4 @@
-import List from "@/components/crm-components/list/page";
+import List from "./list/page";
 import Tasks from "@/components/crm-components/list/data/tasks.json";
 import { DialogFooter, DialogHeader } from "@/components/ui/dialog";
 import { DialogDescription, DialogTitle } from "@radix-ui/react-dialog";
@@ -9,7 +9,7 @@ const Popup = () => {
   return (
     <>
       <DialogHeader>
-        <DialogTitle>Edit profile</DialogTitle>
+        <DialogTitle>Edi</DialogTitle>
         <DialogDescription>
           Make changes to your profile here. Click save when you're done.
         </DialogDescription>
