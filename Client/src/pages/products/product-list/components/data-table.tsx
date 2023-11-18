@@ -23,17 +23,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 
 import { DataTablePagination } from "../components/data-table-pagination";
 import { DataTableToolbar } from "../components/data-table-toolbar";
@@ -41,15 +30,11 @@ import { DataTableToolbar } from "../components/data-table-toolbar";
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
-  buttonTitle: string;
-  dialogContent: any;
 }
 
 export function DataTable<TData, TValue>({
-  dialogContent,
   columns,
   data,
-  buttonTitle,
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] =
@@ -85,16 +70,6 @@ export function DataTable<TData, TValue>({
     <div className="space-y-4">
       <div className="flex justify-between">
         <DataTableToolbar table={table} />
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button variant="default" size="sm">
-              {buttonTitle}
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="sm:max-w-[425px]">
-            {dialogContent}
-          </DialogContent>
-        </Dialog>
       </div>
       <div className="rounded-md border">
         <Table>
