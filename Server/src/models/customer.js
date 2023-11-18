@@ -26,6 +26,10 @@ phoneNumber: {
     type: DataTypes.STRING,
     allowNull: true,
   },
+  projectId:{ 
+    type:DataTypes.INTEGER,
+    allowNull:false,
+   },
    
 });
 

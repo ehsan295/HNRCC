@@ -1,6 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
-const vehicle = require("./vehicle");
+const Vehicle = require("./vehicle");
+const Order = require("./order");
 
 const Transfer = sequelize.define("transfer", {
   transferId: {
@@ -43,15 +44,13 @@ const Transfer = sequelize.define("transfer", {
    },
 
 });
-transfer.belongsTo(vehicle,
-    {
-      foreignkey:'vehicleId'
-    });
-transfer.belongsTo(order,
-      {
-        foreignkey:'orderId'
-  });
+Transfer.belongsTo(Vehicle, {
+  foreignKey: 'vehicleId',
+});
 
+Transfer.belongsTo(Order, {
+  foreignKey: 'orderId',
+});
 
 module.exports = Transfer;
 
