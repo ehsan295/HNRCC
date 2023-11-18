@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
 const Project = require("./project");
-// the relationship is added 
+// the relationship is added
 const Product = sequelize.define("product", {
   productId: {
     type: DataTypes.INTEGER,

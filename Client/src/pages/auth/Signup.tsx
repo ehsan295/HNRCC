@@ -53,12 +53,6 @@ function Signup() {
   const navigate = useNavigate();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    },
   });
   function onSubmit(values: z.infer<typeof formSchema>) {
     axios
