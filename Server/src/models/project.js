@@ -1,12 +1,13 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
+const Product = require("./product");
 // all relationship added
 const Project = sequelize.define("project", {
   projectId: {
-   type: DataTypes.INTEGER,
+    type: DataTypes.INTEGER,
     allowNull: false,
-    autoIncrement:true,
-    primaryKey:true,
+    autoIncrement: true,
+    primaryKey: true,
   },
   projectName: {
     type: DataTypes.STRING,
@@ -18,13 +19,15 @@ const Project = sequelize.define("project", {
   },
   startDate: {
     type: DataTypes.DATE,
-     allowNull: false,
-   },
+    allowNull: false,
+  },
 });
 
 Project.hasMany(Product, { foreignKey: "projectId" });
 
-Project.belongsToMany(Employee, { through: 'ProjectEmployee', foreignKey: 'projectId',
+Project.belongsToMany(Employee, {
+  through: "ProjectEmployee",
+  foreignKey: "projectId",
 });
 
 module.exports = Project;

@@ -37,7 +37,7 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { DataTablePagination } from "../components/data-table-pagination";
@@ -59,15 +59,11 @@ const formSchema = z.object({
   name: z.string().min(2, {
     message: "productName must be at least 2 characters.",
   }),
-  price: z.number().min(2, {
-    message: "productPrice must be at least 2 characters.",
-  }),
-  unit: z.number().min(2, {
+  price: z.coerce.number(),
+  unit: z.string().min(2, {
     message: "productUnit must be at least 2 characters.",
   }),
-  volume: z.number().min(2, {
-    message: "productVolume must be at least 2 characters.",
-  }),
+  volume: z.coerce.number(),
   detail: z.string().min(2, {
     message: "productDetail must be at least 2 characters.",
   }),
@@ -84,7 +80,6 @@ export function DataTable<TData, TValue>({
     []
   );
   const [sorting, setSorting] = React.useState<SortingState>([]);
-
   const table = useReactTable({
     data,
     columns,
@@ -167,6 +162,7 @@ export function DataTable<TData, TValue>({
                       <FormControl>
                         <Input placeholder="قیمت" {...field} />
                       </FormControl>
+                      <FormMessage />
                     </FormItem>
                   )}
                 />
