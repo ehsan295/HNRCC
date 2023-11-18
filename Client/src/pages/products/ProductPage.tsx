@@ -1,11 +1,6 @@
-import List from "./list/page";
-
+import ProductList from "./product-list/page";
 function ProductPage() {
-  return (
-    <div className="w-full mt-4">
-      <List />
-    </div>
-  );
+  return <div className="w-full mt-4"></div>;
 }
 
 export default ProductPage;
