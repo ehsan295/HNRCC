@@ -27,6 +27,8 @@ const Project = sequelize.define("project", {
 
 Project.hasMany(Product, { foreignKey: "projectId" });
 
+Project.hasMany(Stock, { foreignKey: 'projectId' });
+
 Project.belongsToMany(Employee, {
    through: 'ProjectEmployee',
     foreignKey: 'projectId',
