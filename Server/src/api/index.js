@@ -9,8 +9,8 @@ const deleteProductAPI = require("./product/daleteProduct");
 //project
 const createProjectAPI = require("./project/createProject");
 const deleteProjectAPI = require("./project/deleteProject");
-//const readProjectAPI = require("./project/readProject");
-//const updateProjectAPI = require("./project/updateProject");
+const readProjectAPI = require("./project/readProject");
+const updateProjectAPI = require("./project/updateProject");
 
 const router = express.Router();
 
@@ -25,6 +25,8 @@ router.use(deleteProductAPI);
 
 //product
 router.use(createProjectAPI);
+router.use(updateProjectAPI);
+router.use(readProjectAPI);
 router.use(deleteProjectAPI);
 
 module.exports = router;
