@@ -1,7 +1,7 @@
 // models/chatUser.js
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../database');
-const Employee = require('./employee'); // Assuming you have an Employee model
+const Employee = require('./employee');
 
 const ChatUser = sequelize.define('ChatUser', {
   userId: {
@@ -9,19 +9,12 @@ const ChatUser = sequelize.define('ChatUser', {
     primaryKey: true,
     autoIncrement: true,
   },
-  employeeId: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    references: {
-      model: Employee,
-      key: 'employeeId',
-    },
-  },
   lastLogin: {
     type: DataTypes.DATE,
   },
- 
- 
 });
+
+// Define associations
+ChatUser.belongsTo(Employee, { foreignKey: 'employeeId', unique: true }); // Assuming employeeId is the foreign key in ChatUser
 
 module.exports = ChatUser;
