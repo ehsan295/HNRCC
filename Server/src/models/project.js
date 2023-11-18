@@ -1,6 +1,6 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
-
+// all relationship added
 const Project = sequelize.define("project", {
   projectId: {
    type: DataTypes.INTEGER,
@@ -23,5 +23,8 @@ const Project = sequelize.define("project", {
 });
 
 Project.hasMany(Product, { foreignKey: "projectId" });
+
+Project.belongsToMany(Employee, { through: 'ProjectEmployee', foreignKey: 'projectId',
+});
 
 module.exports = Project;
