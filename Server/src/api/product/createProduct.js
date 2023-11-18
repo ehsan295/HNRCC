@@ -1,22 +1,47 @@
-const product = require("./../../models/product");
-const insertproduct = async () => {
-    try{
-        const product = await product.create ({
-            date:new Date(),
-            detail: "product details" ,
-            name: "productName",
-            unit: 'piece',
-            volume: 10,
-            price: 20,
-            picture: "path to picture",
-            projectId: 1 ,
-        });
-        console.log("product created:", product);
+const express = require("express");
+const Product = require("../../models/product");
 
-    }catch (error){
-        console.error('error creating product:',error);
-    }finally{
-        sequelize.close();
-        }
-} 
-insertproduct();
+const router = express.Router();
+
+// Create a new product
+router.post("/product", async (req, res) => {
+  try {
+    const { id, name, unit, volume, price, date, detail, picture, projectId } =
+      req.body;
+
+    // Check if the product with the given ID already exists
+    const existedProduct = await Product.findOne({ id });
+    if (existedProduct) {
+      return res.json({
+        message: "Product Already Exists",
+      });
+    }
+
+    // Create a new product
+    const newProduct = new Product({
+      name,
+      unit,
+      volume,
+      price,
+      date,
+      detail,
+      picture,
+      projectId,
+    });
+
+    // Save the new product
+    const savedProduct = await newProduct.save();
+
+    res.json({
+      message: "Product added successfully",
+      product: savedProduct,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: "Internal Server Error",
+    });
+  }
+});
+
+module.exports = router;
