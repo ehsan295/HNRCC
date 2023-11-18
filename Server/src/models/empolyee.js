@@ -52,10 +52,15 @@ const Empolyee = sequelize.define("empolyee", {
    
 
 });
-empolyee.belongsTo(project,
+Empolyee.belongsTo(project,
     {
       foreignkey:'projectId'
     });
+    Empolyee.belongsToMany(Project, {
+      through: 'ProjectEmployee',
+      foreignKey: 'employeeId',
+    });
+    
 
 
 module.exports = Empolyee;
