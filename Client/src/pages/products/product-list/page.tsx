@@ -11,7 +11,7 @@ export default function ProductList({ data }: { data: Task[] }) {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-12 w-full">
         <Card className="col-span-12">
           <CardHeader>
-            <CardTitle>dkjfdkl</CardTitle>
+            <CardTitle>لیست محصولات</CardTitle>
           </CardHeader>
           <CardContent>
             <DataTable data={data} columns={columns} />
