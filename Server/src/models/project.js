@@ -22,5 +22,6 @@ const Project = sequelize.define("project", {
    },
 });
 
+Project.hasMany(Product, { foreignKey: "projectId" });
 
 module.exports = Project;

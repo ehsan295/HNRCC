@@ -1,5 +1,6 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
+const Project = require("./project");
 
 const Product = sequelize.define("product", {
   productId: {
@@ -41,12 +42,12 @@ const Product = sequelize.define("product", {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: project,
+      model: Project,
       key: "projectId",
     },
   },
 });
-product.belongsTo(project, {
+Product.belongsTo(Project, {
   foreignkey: "projectId",
 });
 
