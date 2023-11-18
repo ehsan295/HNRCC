@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
 
-const vehicle = sequelize.define("vehicle", {
+const Vehicle = sequelize.define("vehicle", {
   vehicleId: {
    type: DataTypes.INTEGER,
     allowNull: false,
@@ -26,13 +26,14 @@ const vehicle = sequelize.define("vehicle", {
    
 
 });
-vehicle.belongsTo(project,
-    {
-      foreignkey:'projectId'
-    });
- vehicle.belongsTo(empolyee,
-      {
-        foreignkey:'driver'
+
+  Vehicle.belongsTo(Employee, {
+    foreignKey: 'driver',
+  });
+  
+  Vehicle.belongsToMany(Project, {
+    through: 'VehicleProject',
+    foreignKey: 'vehicleId',
   });
 
 
