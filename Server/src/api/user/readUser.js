@@ -1,15 +1,15 @@
 const express = require("express");
-const Stock = require("../../models/stock");
+const User = require("../../models/user");
 const router = express.Router();
 
 // ... (existing routes)
 
-// Read all stock product
-router.get("/stock", async (req, res) => {
+// Read all products
+router.get("/users", async (req, res) => {
   try {
-    const stocks = await Stock.find();
+    const users = await User.find();
     res.json({
-      stocks,
+      users,
     });
   } catch (error) {
     console.error(error);
