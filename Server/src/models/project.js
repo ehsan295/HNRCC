@@ -1,6 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
 const Product = require("./product");
+const Employee = require("./empolyee");
 // all relationship added
 const Project = sequelize.define("project", {
   projectId: {
