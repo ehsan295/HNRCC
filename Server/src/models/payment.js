@@ -3,7 +3,7 @@ const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
 const customer = require("./customer");
 
-const   payment = sequelize.define("payment", {
+const   Payment = sequelize.define("payment", {
   paymentId: {
    type: DataTypes.INTEGER,
     allowNull: false,
@@ -50,5 +50,5 @@ payment.belongsTo(customer,
     });
 
 
-module.exports = payment;
+module.exports = Payment;
 

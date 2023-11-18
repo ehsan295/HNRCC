@@ -4,7 +4,7 @@ const { sequelize } = require('../database/index');
 const Project = require('./project'); // Assuming you have a Project model
 const Employee = require('./employee'); // Assuming you have an Employee model
 
-const projectEmployee = sequelize.define('projectEmployee', {
+const ProjectEmployee = sequelize.define('projectEmployee', {
   projectId: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -23,4 +23,4 @@ const projectEmployee = sequelize.define('projectEmployee', {
   },
 });
 
-module.exports = projectEmployee;
+module.exports = ProjectEmployee;

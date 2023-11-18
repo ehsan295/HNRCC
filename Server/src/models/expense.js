@@ -2,7 +2,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
 
-const expense = sequelize.define("expense", {
+const Expense = sequelize.define("expense", {
   expenseId: {
    type: DataTypes.INTEGER,
     allowNull: false,
@@ -52,5 +52,5 @@ expense.belongsTo(empolyee,
           foreignkey:'expenseCatagoreid'
         });
 
-module.exports = expense;
+module.exports = Expense;
 

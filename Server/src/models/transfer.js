@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
 const vehicle = require("./vehicle");
 
-const transfer = sequelize.define("transfer", {
+const Transfer = sequelize.define("transfer", {
   transferId: {
    type: DataTypes.INTEGER,
     allowNull: false,
@@ -53,5 +53,5 @@ transfer.belongsTo(order,
   });
 
 
-module.exports = transfer;
+module.exports = Transfer;
 

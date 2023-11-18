@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
 
-const order = sequelize.define("order", {
+const Order = sequelize.define("order", {
   orderId: {
    type: DataTypes.INTEGER,
     allowNull: false,
@@ -26,4 +26,4 @@ order.belongsTo(orderdetail,
   foreignkey:'orderdetailId'
 });
 
-module.exports = order;
+module.exports = Order;

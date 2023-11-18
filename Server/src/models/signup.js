@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
 
-const signup = sequelize.define("signup", {
+const Signup = sequelize.define("signup", {
   id: {
    type: DataTypes.INTEGER,
     allowNull: false,
@@ -31,4 +31,4 @@ const signup = sequelize.define("signup", {
 });
 
 
-module.exports = signup;
+module.exports = Signup;
