@@ -39,18 +39,7 @@ const Expense = sequelize.define("expense", {
    }
 
 });
-expense.belongsTo(project,
-    {
-      foreignkey:'projectId'
-    });
-expense.belongsTo(empolyee,
-        {
-          foreignkey:'empolyeId'
-    });
- expense.belongsTo(expenseCatagore,
-        {
-          foreignkey:'expenseCatagoreid'
-        });
+
 
 module.exports = Expense;
 

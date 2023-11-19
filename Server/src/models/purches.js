@@ -48,11 +48,6 @@ const PurchesModel = sequelize.define("purches", {
   },
 });
 
-PurchesModel.belongsTo(ProjectModel, {
-  foreignkey: "projectId",
-});
-PurchesModel.belongsTo(EmpolyeeModel, {
-  foreignkey: "empolyeId",
-});
+
 
 module.exports = PurchesModel;

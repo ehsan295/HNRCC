@@ -15,14 +15,9 @@ const OrderModel = sequelize.define("order", {
   orderdetailId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    references: {
-      model: OrderdetailModel,
-      key: "orderdetailId",
-    },
+   
   },
 });
-OrderModel.belongsTo(OrderdetailModel, {
-  foreignkey: "orderdetailId",
-});
+
 
 module.exports = OrderModel;

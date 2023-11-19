@@ -13,18 +13,12 @@ const PaymentModel = sequelize.define("payment", {
   orderId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    references: {
-      model: order,
-      key: "orderid",
-    },
+   
   },
   customerId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    references: {
-      model: customer,
-      key: "customerId",
-    },
+ 
   },
 
   total: {
@@ -40,11 +34,6 @@ const PaymentModel = sequelize.define("payment", {
     allowNull: false,
   },
 });
-PaymentModel.belongsTo(OrderModel, {
-  foreignkey: "orderId",
-});
-PaymentModel.belongsTo(customerModel, {
-  foreignkey: "customerId",
-});
+
 
 module.exports = PaymentModel;

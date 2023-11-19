@@ -50,12 +50,6 @@ const EmployeeModel = sequelize.define("empolyee", {
     allowNull: false,
   },
 });
-EmployeeModel.belongsTo(ProjectModel, {
-  foreignkey: "projectId",
-});
-EmployeeModel.belongsToMany(ProjectModel, {
-  through: "ProjectEmployee",
-  foreignKey: "employeeId",
-});
+
 
 module.exports = EmployeeModel;

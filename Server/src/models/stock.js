@@ -32,16 +32,5 @@ const StockModel = sequelize.define("Stock", {
   },
 });
 
-StockModel.belongsTo(ProjectModel, { foreignKey: "projectId" });
-StockModel.belongsToMany(ProductModel, {
-  through: "StockProduct",
-  foreignKey: "stockId",
-  otherKey: "productId", // Add this line
-});
-ProductModel.belongsToMany(StockModel, {
-  through: "StockProduct",
-  foreignKey: "productId",
-  otherKey: "stockId", // Assuming reciprocal association
-});
 
 module.exports = StockModel;
