@@ -1,16 +1,15 @@
 const express = require("express");
-const Project = require("../../models/project");
+const ProjectModel = require("../../models/project");
 
 const router = express.Router();
 
 // Create a new project
 router.post("/project", async (req, res) => {
   try {
-    const { projectId, projectName, location, startDate } =
-      req.body;
+    const { projectId, projectName, location, startDate } = req.body;
 
     // Check if the projectt with the given ID already exists
-    const existedProject = await Project.findOne({ projectId });
+    const existedProject = await ProjectModel.findOne({ projectId });
     if (existedProject) {
       return res.json({
         message: "Product Already Exists",
@@ -18,12 +17,11 @@ router.post("/project", async (req, res) => {
     }
 
     // Create a new project
-    const newProject = new Project({
+    const newProject = new ProjectModel({
       projectId,
-      projectName, 
+      projectName,
       location,
-       startDate
-
+      startDate,
     });
 
     // Save the new product

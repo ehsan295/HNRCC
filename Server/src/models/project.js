@@ -1,9 +1,5 @@
-// models/project.js
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
-const ProductModel = require("./product"); // Assuming you have a Product model
-
-
 const ProjectModel = sequelize.define("Project", {
   projectId: {
     type: DataTypes.INTEGER,
@@ -24,19 +20,4 @@ const ProjectModel = sequelize.define("Project", {
     allowNull: false,
   },
 });
-
-ProjectModel.hasMany(ProductModel, { foreignKey: "projectId" });
-
-ProjectModel.hasMany(StockModel, { foreignKey: "projectId" });
-
-ProjectModel.belongsToMany(EmployeeModel, {
-  through: "ProjectEmployee",
-  foreignKey: "projectId",
-});
-
-ProjectModel.belongsToMany(VehicleModel, {
-  through: "VehicleProject",
-  foreignKey: "projectId",
-});
-
 module.exports = ProjectModel;

@@ -9,5 +9,5 @@ const sequelize = new Sequelize(
     dialect: "mysql",
   }
 );
-sequelize.sync();
+
 module.exports = sequelize;
