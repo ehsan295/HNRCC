@@ -67,6 +67,12 @@ const deleteOrderDetailAPI = require("./orderdetail/deleteOrderDetail");
 const readOrderDetailAPI = require("./orderdetail/readOrderDetail");
 const updateOrderDetailAPI = require("./orderdetail/updateOrderDetail");
 
+const createOrderAPI = require("./order/createOrder");
+const deleteOrderAPI = require("./order/deleteOrder");
+const readOrderAPI = require("./order/readOrder");
+const updateOrderAPI = require("./order/updateOrder");
+
+
 const router = express.Router();
 
 router.use(signupAPI);
@@ -138,6 +144,11 @@ router.use(createOrderDetailAPI);
 router.use(updateOrderDetailAPI);
 router.use(readOrderDetailAPI);
 router.use(deleteOrderDetailAPI);
+
+router.use(createOrderAPI);
+router.use(updateOrderAPI);
+router.use(readOrderAPI);
+router.use(deleteOrderAPI);
 
 
 
