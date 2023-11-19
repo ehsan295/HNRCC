@@ -1,13 +1,13 @@
 const express = require("express");
-const Purches = require("../../models/purches");
+const ProjectEmployee = require("../../models/projectempolyee");
 
 const router = express.Router();
 
-router.get("/purches", async (req, res) => {
+router.get("/projectEmpolyees", async (req, res) => {
     try {
-      const purches = await Purches.find();
+      const projectEmpolyees = await ProjectEmployee.find();
       res.json({
-        purches,
+        projectEmpolyees,
       });
     } catch (error) {
       console.error(error);

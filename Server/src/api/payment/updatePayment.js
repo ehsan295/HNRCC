@@ -1,28 +1,28 @@
 const express = require("express");
-const Purches = require("../../models/purches");
+const Payment = require("../../models/payment");
 
 const router = express.Router();
 
-router.put("/purches/:id", async (req, res) => {
-    const purchesId = req.params.id;
+router.put("/payment/:id", async (req, res) => {
+    const paymentId = req.params.id;
   
     try {
-      const updatedPurches = await Purches.findOneAndUpdate(
-        { id: purchesId },
+      const updatedPayment = await Payment.findOneAndUpdate(
+        { id: paymentId },
         req.body,
         {
           new: true,
         }
       );
   
-      if (updatedPurches) {
+      if (updatedPayment) {
         res.json({
-          message: "Purches updated successfully",
-          updatedPurches,
+          message: "Payment updated successfully",
+          updatedPayment,
         });
       } else {
         res.json({
-          message: "Purches not found",
+          message: "Payment not found",
         });
       }
     } catch (error) {

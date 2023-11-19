@@ -47,6 +47,26 @@ const createRoomParticipantAPI = require("./roomparticipant/createRoomParticipan
 const readRoomParticipantAPI = require("./roomparticipant/readRoomParticipant");
 const updateRoomParticipantAPI = require("./roomparticipant/updateRoomParticipant");
 
+const deletePurchesAPI = require("./purches/deletePurches");
+const createPurchesAPI = require("./purches/createPurches");
+const readPurchesAPI = require("./purches/readPurches");
+const updatePurchesAPI = require("./purches/updatePurches");
+
+const deleteProjectEmpolyeeAPI = require("./projectempolyee/deleteProjectEmpolyee");
+const createProjectEmpolyeeAPI = require("./projectempolyee/createProjectEmpolyee");
+const readProjectEmpolyeeAPI = require("./projectempolyee/readProjectEmpolyee");
+const updateProjectEmpolyeeAPI = require("./projectempolyee/updateProjectEmpolyee");
+
+const createPaymentAPI = require("./payment/createPayment");
+const deletePaymentAPI = require("./payment/deletePayment");
+const readPaymentAPI = require("./payment/readPayment");
+const updatePaymentAPI = require("./payment/updatePayment");
+
+const createOrderDetailAPI = require("./orderdetail/cteateOrderDetail");
+const deleteOrderDetailAPI = require("./orderdetail/deleteOrderDetail");
+const readOrderDetailAPI = require("./orderdetail/readOrderDetail");
+const updateOrderDetailAPI = require("./orderdetail/updateOrderDetail");
+
 const router = express.Router();
 
 router.use(signupAPI);
@@ -98,6 +118,26 @@ router.use(createRoomParticipantAPI);
 router.use(updateRoomParticipantAPI);
 router.use(readRoomParticipantAPI);
 router.use(deleteRoomParticipantAPI);
+
+router.use(createPurchesAPI);
+router.use(updatePurchesAPI);
+router.use(readPurchesAPI);
+router.use(deletePurchesAPI);
+
+router.use(createProjectEmpolyeeAPI);
+router.use(updateProjectEmpolyeeAPI);
+router.use(readProjectEmpolyeeAPI);
+router.use(deleteProjectEmpolyeeAPI);
+
+router.use(createPaymentAPI);
+router.use(updatePaymentAPI);
+router.use(readPaymentAPI);
+router.use(deletePaymentAPI);
+
+router.use(createOrderDetailAPI);
+router.use(updateOrderDetailAPI);
+router.use(readOrderDetailAPI);
+router.use(deleteOrderDetailAPI);
 
 
 

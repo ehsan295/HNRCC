@@ -1,13 +1,13 @@
 const express = require("express");
-const Purches = require("../../models/purches");
+const Payment = require("../../models/payment");
 
 const router = express.Router();
 
-router.get("/purches", async (req, res) => {
+router.get("/payments", async (req, res) => {
     try {
-      const purches = await Purches.find();
+      const payments = await Payment.find();
       res.json({
-        purches,
+        payments,
       });
     } catch (error) {
       console.error(error);

@@ -31,7 +31,7 @@ router.post("/project", async (req, res) => {
 
     res.json({
       message: "Product added successfully",
-      product: savedProject,
+      Project: savedProject,
     });
   } catch (error) {
     console.error(error);

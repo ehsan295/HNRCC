@@ -1,13 +1,12 @@
 const express = require("express");
-const Purches = require("../../models/purches");
+const Orderdetail = require("../../models/orderdetail");
 
 const router = express.Router();
-
-router.get("/purches", async (req, res) => {
+router.get("/orderdetails", async (req, res) => {
     try {
-      const purches = await Purches.find();
+      const orderdetails = await Orderdetail.find();
       res.json({
-        purches,
+        orderdetails,
       });
     } catch (error) {
       console.error(error);
