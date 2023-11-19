@@ -1,16 +1,18 @@
 // models/projectEmployee.js
-const { DataTypes } = require('sequelize');
-const { sequelize } = require('../database/index');
-const Project = require('./project'); // Assuming you have a Project model
-const Employee = require('./employee'); // Assuming you have an Employee model
+const { DataTypes } = require("sequelize");
+const sequelize = require("../database/index");
+const ProjectModel = require("./project");
+const EmployeeModel = require("./empolyee");
+// Assuming you have a Project model
+// Assuming you have an Employee model
 
-const ProjectEmployee = sequelize.define('projectEmployee', {
+const ProjectEmployee = sequelize.define("projectEmployee", {
   projectId: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     references: {
       model: Project,
-      key: 'projectId',
+      key: "projectId",
     },
   },
   employeeId: {
@@ -18,7 +20,7 @@ const ProjectEmployee = sequelize.define('projectEmployee', {
     primaryKey: true,
     references: {
       model: Employee,
-      key: 'employeeId',
+      key: "employeeId",
     },
   }, // Assuming you want an additional field like role for the association table
   role: {
@@ -26,13 +28,13 @@ const ProjectEmployee = sequelize.define('projectEmployee', {
     allowNull: true,
   },
 });
-Project.belongsToMany(Employee, {
-  through: ProjectEmployee,
-  foreignKey: 'projectId',
+ProjectModel.belongsToMany(EmployeeModel, {
+  through: "ProjectEmployee",
+  foreignKey: "projectId",
 });
-Employee.belongsToMany(Project, {
-  through: ProjectEmployee,
-  foreignKey: 'employeeId',
+EmployeeModel.belongsToMany(ProjectModel, {
+  through: "projectEmployee",
+  foreignKey: "employeeId",
 });
 
 module.exports = ProjectEmployee;

@@ -1,8 +1,8 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
-const Project = require("./project");
+const ProjectModel = require("./project");
 
-const Empolyee = sequelize.define("empolyee", {
+const EmployeeModel = sequelize.define("empolyee", {
   empolyeId: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -50,12 +50,12 @@ const Empolyee = sequelize.define("empolyee", {
     allowNull: false,
   },
 });
-Empolyee.belongsTo(Project, {
+EmployeeModel.belongsTo(ProjectModel, {
   foreignkey: "projectId",
 });
-Empolyee.belongsToMany(Project, {
+EmployeeModel.belongsToMany(ProjectModel, {
   through: "ProjectEmployee",
   foreignKey: "employeeId",
 });
 
-module.exports = Empolyee;
+module.exports = EmployeeModel;

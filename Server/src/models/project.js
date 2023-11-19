@@ -1,10 +1,10 @@
 // models/project.js
-const { DataTypes } = require('sequelize');
-const sequelize = require('../database/index');
-const Product = require('./product'); // Assuming you have a Product model
-const Stock = require('./stock'); // Assuming you have a Stock model
-const Employee = require('./employee'); // Assuming you have an Employee model
-const Vehicle = require('./vehicle');
+const { DataTypes } = require("sequelize");
+const sequelize = require("../database/index");
+const ProductModel = require("./product"); // Assuming you have a Product model
+const StockModel = require("./stock"); // Assuming you have a Stock model
+const EmployeeModel = require("./employee"); // Assuming you have an Employee model
+const VehicleModel = require("./vehicle");
 
 const ProjectModel = sequelize.define("Project", {
   projectId: {
@@ -27,16 +27,16 @@ const ProjectModel = sequelize.define("Project", {
   },
 });
 
-ProjectModel.hasMany(Product, { foreignKey: "projectId" });
+ProjectModel.hasMany(ProductModel, { foreignKey: "projectId" });
 
-ProjectModel.hasMany(Stock, { foreignKey: "projectId" });
+ProjectModel.hasMany(StockModel, { foreignKey: "projectId" });
 
-ProjectModel.belongsToMany(Employee, {
+ProjectModel.belongsToMany(EmployeeModel, {
   through: "ProjectEmployee",
   foreignKey: "projectId",
 });
 
-ProjectModel.belongsToMany(Vehicle, {
+ProjectModel.belongsToMany(VehicleModel, {
   through: "VehicleProject",
   foreignKey: "projectId",
 });

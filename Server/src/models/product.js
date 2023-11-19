@@ -1,8 +1,9 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
 const Project = require("./project");
-// the relationship is added
-const Product = sequelize.define("product", {
+const StockModel = require("./stock");
+const ProjectModel = require("./project");
+const ProductModel = sequelize.define("product", {
   productId: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -47,10 +48,12 @@ const Product = sequelize.define("product", {
     },
   },
 });
-Product.belongsTo(Project, {
+ProductModel.belongsTo(ProjectModel, {
   foreignkey: "projectId",
 });
-Product.belongsToMany(Stock, { through: 'StockProduct', foreignKey: 'productId' });
+ProductModel.belongsToMany(StockModel, {
+  through: "StockProduct",
+  foreignKey: "productId",
+});
 
-
-module.exports = Product;
+module.exports = ProductModel;

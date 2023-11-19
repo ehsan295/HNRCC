@@ -1,10 +1,10 @@
 // models/stock.js
-const { DataTypes } = require('sequelize');
-const { sequelize } = require('../database/index'); // Assuming you have a file for database configuration
-const Project = require('./project'); // Assuming you have a Project model
-const Product = require('./product'); // Assuming you have a Product model
+const { DataTypes } = require("sequelize");
+const sequelize = require("../database/index"); // Assuming you have a file for database configuration
+const ProjectModel = require("./project"); // Assuming you have a Project model
+const ProductModel = require("./product"); // Assuming you have a Product model
 
-const Stock = sequelize.define('Stock', {
+const StockModel = sequelize.define("Stock", {
   stockId: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -28,8 +28,14 @@ const Stock = sequelize.define('Stock', {
   },
 });
 
-Stock.belongsTo(Project, { foreignKey: 'projectId' });
-Stock.belongsToMany(Product, { through: 'StockProduct', foreignKey: 'stockId' });
-Product.belongsToMany(Stock, { through: 'StockProduct', foreignKey: 'productId' }); // Assuming reciprocal association
+StockModel.belongsTo(ProjectModel, { foreignKey: "projectId" });
+StockModel.belongsToMany(ProductModel, {
+  through: "StockProduct",
+  foreignKey: "stockId",
+});
+ProductModel.belongsToMany(StockModel, {
+  through: "StockProduct",
+  foreignKey: "productId",
+}); // Assuming reciprocal association
 
-module.exports = Stock;
+module.exports = StockModel;

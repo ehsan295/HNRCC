@@ -1,22 +1,24 @@
-
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
-const order = require("./order")
+const OrderModel = require("./order");
+const ProductModel = require("./product");
+const OrderModel = require("./order");
 
-const Orderdetail = sequelize.define("orderdetail", {
+const OrderdetailModel = sequelize.define("orderdetail", {
   orderdetailId: {
-   type: DataTypes.INTEGER,
+    type: DataTypes.INTEGER,
     allowNull: false,
-    autoIncrement:true,
-    primaryKey:true,
+    autoIncrement: true,
+    primaryKey: true,
   },
   orderId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    references:{
-      model: order ,
-      key:'orderid'
-    }},
+    references: {
+      model: order,
+      key: "orderid",
+    },
+  },
 
   unit: {
     type: DataTypes.STRING,
@@ -25,30 +27,28 @@ const Orderdetail = sequelize.define("orderdetail", {
   productId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    references:{
-      model: product ,
-      key:'productid'
-    }
+    references: {
+      model: product,
+      key: "productid",
+    },
   },
 
-quantity: {
-  type: DataTypes.INTEGER,
-  allowNull: false,
-},
+  quantity: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
   price: {
     type: DataTypes.INTEGER,
     allowNull: false,
-},
+  },
 });
 
-orderdetail.belongsTo(order,
-  {
-    foreignkey:'orderId'
-  });
+OrderdetailModel.belongsTo(OrderModel, {
+  foreignkey: "orderId",
+});
 
-  orderdetail.belongsTo(product,
-    {
-      foreignkey:'productId'
-    });
+OrderdetailModel.belongsTo(ProductModel, {
+  foreignkey: "productId",
+});
 
-module.exports = Orderdetail;
+module.exports = OrderdetailModel;

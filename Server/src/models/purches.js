@@ -1,30 +1,32 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
+const ProjectModel = require("./project");
+const EmpolyeeModel = require("./empolyee");
 
-const Purches = sequelize.define("purches", {
-    purchesId: {
-   type: DataTypes.INTEGER,
-    allowNull: false,
-    autoIncrement:true,
-    primaryKey:true,
-  },
-  projectId:{ 
-    type:DataTypes.INTEGER,
-    allowNull:false,
-   },
-   empolyeId: {
+const PurchesModel = sequelize.define("purches", {
+  purchesId: {
     type: DataTypes.INTEGER,
-     allowNull: false,
-   },
+    allowNull: false,
+    autoIncrement: true,
+    primaryKey: true,
+  },
+  projectId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  empolyeId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
   companyName: {
     type: DataTypes.STRING,
-     allowNull: false,
-   },
-   unit: {
+    allowNull: false,
+  },
+  unit: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -44,18 +46,13 @@ const Purches = sequelize.define("purches", {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-
 });
 
-purches.belongsTo(project,
-    {
-      foreignkey:'projectId'
-    });
-purches.belongsTo(empolyee,
-        {
-          foreignkey:'empolyeId'
-    });
+PurchesModel.belongsTo(ProjectModel, {
+  foreignkey: "projectId",
+});
+PurchesModel.belongsTo(EmpolyeeModel, {
+  foreignkey: "empolyeId",
+});
 
-
-module.exports = Purches;
-
+module.exports = PurchesModel;

@@ -1,54 +1,50 @@
-
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
-const customer = require("./customer");
+const customerModel = require("./customer");
+const OrderModel = require("./order");
 
-const   Payment = sequelize.define("payment", {
+const PaymentModel = sequelize.define("payment", {
   paymentId: {
-   type: DataTypes.INTEGER,
+    type: DataTypes.INTEGER,
     allowNull: false,
-    autoIncrement:true,
-    primaryKey:true,
+    autoIncrement: true,
+    primaryKey: true,
   },
   orderId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    references:{
-      model: order ,
-      key:'orderid'
-    }},
-    customerId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references:{
-          model: customer ,
-          key:'customerId'
-        }},
- 
-   total: {
+    references: {
+      model: order,
+      key: "orderid",
+    },
+  },
+  customerId: {
     type: DataTypes.INTEGER,
-     allowNull: false,
-   },
-   payed: {
-    type: DataTypes.INTEGER,
-     allowNull: false,
-   },
-   loan:{
-    type: DataTypes.INTEGER,
-     allowNull: false,
-   },
- 
+    allowNull: false,
+    references: {
+      model: customer,
+      key: "customerId",
+    },
+  },
 
+  total: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  payed: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  loan: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
 });
-payment.belongsTo(order,
-    {
-      foreignkey:'orderId'
-    });
-payment.belongsTo(customer,
-        {
-          foreignkey:'customerId'
-    });
+PaymentModel.belongsTo(OrderModel, {
+  foreignkey: "orderId",
+});
+PaymentModel.belongsTo(customerModel, {
+  foreignkey: "customerId",
+});
 
-
-module.exports = Payment;
-
+module.exports = PaymentModel;

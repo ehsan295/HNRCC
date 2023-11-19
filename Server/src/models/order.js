@@ -1,12 +1,12 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
-
-const Order = sequelize.define("order", {
+const OrderdetailModel = require("./orderdetail");
+const OrderModel = sequelize.define("order", {
   orderId: {
-   type: DataTypes.INTEGER,
+    type: DataTypes.INTEGER,
     allowNull: false,
-    autoIncrement:true,
-    primaryKey:true,
+    autoIncrement: true,
+    primaryKey: true,
   },
   date: {
     type: DataTypes.DATE,
@@ -15,15 +15,14 @@ const Order = sequelize.define("order", {
   orderdetailId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    references:{
-      model:orderdetail,
-      key:'orderdetailId'
-    }
+    references: {
+      model: OrderdetailModel,
+      key: "orderdetailId",
+    },
   },
 });
-order.belongsTo(orderdetail,
-{
-  foreignkey:'orderdetailId'
+OrderModel.belongsTo(OrderdetailModel, {
+  foreignkey: "orderdetailId",
 });
 
-module.exports = Order;
+module.exports = OrderModel;
