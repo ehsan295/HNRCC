@@ -1,5 +1,4 @@
 const express = require("express");
-const Product = require("../models/Product");
 const Product = require("../../models/product");
 const router = express.Router();
 // Update a product by ID
