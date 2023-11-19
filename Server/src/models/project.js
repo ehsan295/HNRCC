@@ -2,9 +2,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
 const ProductModel = require("./product"); // Assuming you have a Product model
-const StockModel = require("./stock"); // Assuming you have a Stock model
-const EmployeeModel = require("./employee"); // Assuming you have an Employee model
-const VehicleModel = require("./vehicle");
+
 
 const ProjectModel = sequelize.define("Project", {
   projectId: {
