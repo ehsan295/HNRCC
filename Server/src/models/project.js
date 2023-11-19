@@ -1,11 +1,12 @@
-const { DataTypes } = require("sequelize");
-const sequelize = require("../database/index");
-const Project = require("./project"); // Assuming you have a Project model
-const Employee = require("./employee"); // Assuming you have an Employee model
-const Vehicle = require("./vehicle");
+// models/project.js
+const { DataTypes } = require('sequelize');
+const sequelize = require('../database/index');
+const Product = require('./product'); // Assuming you have a Product model
+const Stock = require('./stock'); // Assuming you have a Stock model
+const Employee = require('./employee'); // Assuming you have an Employee model
+const Vehicle = require('./vehicle');
 
-// all relationship added
-const Project = sequelize.define("project", {
+const ProjectModel = sequelize.define("Project", {
   projectId: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -26,18 +27,18 @@ const Project = sequelize.define("project", {
   },
 });
 
-Project.hasMany(Product, { foreignKey: "projectId" });
+ProjectModel.hasMany(Product, { foreignKey: "projectId" });
 
-Project.hasMany(Stock, { foreignKey: "projectId" });
+ProjectModel.hasMany(Stock, { foreignKey: "projectId" });
 
-Project.belongsToMany(Employee, {
+ProjectModel.belongsToMany(Employee, {
   through: "ProjectEmployee",
   foreignKey: "projectId",
 });
 
-Project.belongsToMany(Vehicle, {
+ProjectModel.belongsToMany(Vehicle, {
   through: "VehicleProject",
   foreignKey: "projectId",
 });
 
-module.exports = Project;
+module.exports = ProjectModel;

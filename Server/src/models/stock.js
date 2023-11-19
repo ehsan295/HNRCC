@@ -12,29 +12,24 @@ const Stock = sequelize.define('Stock', {
   },
   date: {
     type: DataTypes.DATE,
-    primaryKey: true,
-  },
-  productId: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
+    allowNull: false,
   },
   unit: {
     type: DataTypes.STRING,
-    allowNull:true,
+    allowNull: true,
   },
   volume: {
     type: DataTypes.INTEGER,
-    allowNull:true,
+    allowNull: true,
   },
   price: {
     type: DataTypes.INTEGER,
-    allowNull:true,
+    allowNull: true,
   },
- 
-  
 });
 
 Stock.belongsTo(Project, { foreignKey: 'projectId' });
 Stock.belongsToMany(Product, { through: 'StockProduct', foreignKey: 'stockId' });
+Product.belongsToMany(Stock, { through: 'StockProduct', foreignKey: 'productId' }); // Assuming reciprocal association
 
 module.exports = Stock;
