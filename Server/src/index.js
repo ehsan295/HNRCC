@@ -12,5 +12,5 @@ createTable()
     });
   })
   .catch((err) => {
-    console.log(err);
+    console.log("We've encountered an error" + err);
   });
