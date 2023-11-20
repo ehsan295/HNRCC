@@ -40,11 +40,12 @@ VehicleModel.belongsTo(EmployeeModel,{
 })
 
 //transfer and vehicle
+TransferModel.belongsTo(VehicleModel, { foreignKey: 'vehicleId' });
 VehicleModel.hasMany(TransferModel,{
   foreignKey: 'vehicleId',
 })
 
-TransferModel.belongsTo(VehicleModel, { foreignKey: 'vehicleId' });
+
 // // order and transfer
 OrderModel.hasMany(TransferModel, {
   foreignKey: 'orderId',
