@@ -1,55 +1,51 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
-const ProjectModel = require("./project");
 
-const EmployeeModel = sequelize.define("empolyee", {
-  employeId: {
+const PurchesModel = sequelize.define("Purches", {
+  purchesId: {
     type: DataTypes.INTEGER,
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
   },
+  projectId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  employeId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  fatherName: {
+  companyName: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  tazkiraNumber: {
+  unit: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  phoneNumbe: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  Cv: {
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
-  photo: {
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
-  position: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  sallary: {
+  price: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  startDate: {
+  date: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
+  billfile: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  projectId: {
+  quantity: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
 });
 
 
-module.exports = EmployeeModel;
+
+module.exports = PurchesModel;

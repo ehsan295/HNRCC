@@ -2,12 +2,12 @@ const sequelize = require("../database/index");
 const ProductModel = require("../models/product");
 const ProjectModel = require("../models/project");
 
-// const VehicleModel = require ("../models/vehicle");
+const VehicleModel = require ("../models/vehicle");
 const EmployeeModel = require("../models/empolyee");
 // const TransferModel = require("../models/transfer");
 // const OrderModel = require ("../models/order");
-// const StockModel = require("../models/stock")
-// const PurchaseModel = require("../models/purches")
+const StockModel = require("../models/stock")
+const PurchaseModel = require("../models/purches")
 // const OrderdetailModel = require ("../models/orderdetail")
 // const PaymentModel =require("../models/payment")
 // const CustomerModel = require("../models/customer")
@@ -25,19 +25,19 @@ ProductModel.belongsTo(ProjectModel, {
 
 // vehicle and project
 
-// ProjectModel.hasMany(VehicleModel, {
-//   foreignKey: "projectId",
-// });
-// VehicleModel.belongsTo(ProjectModel,{
-//   foreignKey: "projectId",
-// })
+ProjectModel.hasMany(VehicleModel, {
+  foreignKey: "projectId",
+});
+VehicleModel.belongsTo(ProjectModel,{
+  foreignKey: "projectId",
+})
 // // vehicle and Employee
-// EmployeeModel.hasOne(VehicleModel,{
-//   foreignKey: "employeId",
-// })
-// VehicleModel.belongsTo(EmployeeModel,{
-//   foreignKey: "driverId",
-// })
+EmployeeModel.hasOne(VehicleModel,{
+  foreignKey: "employeId",
+})
+VehicleModel.belongsTo(EmployeeModel,{
+  foreignKey: "employeId",
+})
 
 //transfer and vehicle
 // VehicleModel.hasMany(TransferModel,{
@@ -55,31 +55,31 @@ ProductModel.belongsTo(ProjectModel, {
 //   foreignKey: 'orderId',
 // });
 // // stock and project
-// ProjectModel.hasMany(StockModel, {
-//   foreignKey: 'projectId',
-// });
+ProjectModel.hasMany(StockModel, {
+  foreignKey: 'projectId',
+});
 
-// StockModel.belongsTo(ProjectModel, {
-//   foreignKey: 'projectId',
-// });
+StockModel.belongsTo(ProjectModel, {
+  foreignKey: 'projectId',
+});
 
 // // Set up the association between PurchaseModel and ProjectModel
-// PurchaseModel.belongsTo(ProjectModel, {
-//   foreignKey: 'projectId',
-// });
+PurchaseModel.belongsTo(ProjectModel, {
+  foreignKey: 'projectId',
+});
 
-// ProjectModel.hasMany(PurchaseModel, {
-//   foreignKey: 'projectId',
-// });
+ProjectModel.hasMany(PurchaseModel, {
+  foreignKey: 'projectId',
+});
 
 //purches and employee
-// PurchaseModel.belongsTo(EmployeeModel, {
-//   foreignKey: 'employeId',
-// });
+PurchaseModel.belongsTo(EmployeeModel, {
+  foreignKey: 'employeId',
+});
 
-// EmployeeModel.hasMany(PurchaseModel, {
-//   foreignKey: 'employeId',
-// });
+EmployeeModel.hasMany(PurchaseModel, {
+  foreignKey: 'employeId',
+});
 
 //product and project
 ProductModel.belongsTo(ProjectModel, {
