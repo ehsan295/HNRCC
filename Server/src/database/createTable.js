@@ -4,7 +4,7 @@ const ProjectModel = require("../models/project");
 const OrderdetailProductModel = require("../models/odrerdetailProduct")
 const VehicleModel = require ("../models/vehicle");
 const EmployeeModel = require("../models/empolyee");
-// const TransferModel = require("../models/transfer");
+const TransferModel = require("../models/transfer");
 const OrderModel = require ("../models/order");
 const StockModel = require("../models/stock")
 const PurchaseModel = require("../models/purches")
@@ -40,20 +40,19 @@ VehicleModel.belongsTo(EmployeeModel,{
 })
 
 //transfer and vehicle
-// VehicleModel.hasMany(TransferModel,{
-//   foreignKey: "vehicleId",
-// })
-// TransferModel.belongsTo(VehicleModel,{
-//   foreignKey: "vehicleId",
-// })
-// // order and transfer
-// OrderModel.hasMany(TransferModel, {
-//   foreignKey: 'orderId',
-// });
+VehicleModel.hasMany(TransferModel,{
+  foreignKey: 'vehicleId',
+})
 
-// TransferModel.belongsTo(OrderModel, {
-//   foreignKey: 'orderId',
-// });
+TransferModel.belongsTo(VehicleModel, { foreignKey: 'vehicleId' });
+// // order and transfer
+OrderModel.hasMany(TransferModel, {
+  foreignKey: 'orderId',
+});
+
+TransferModel.belongsTo(OrderModel, {
+  foreignKey: 'orderId',
+});
 // // stock and project
 ProjectModel.hasMany(StockModel, {
   foreignKey: 'projectId',
