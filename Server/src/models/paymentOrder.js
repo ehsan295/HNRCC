@@ -5,13 +5,11 @@ const PaymentOrderModel = sequelize.define("Order", {
   orderId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    autoIncrement: true,
     primaryKey: true,
   },
   paymentId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    autoIncrement: true,
     primaryKey: true,
   },
 });
