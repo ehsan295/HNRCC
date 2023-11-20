@@ -14,6 +14,7 @@ const CustomerModel = require("../models/customer")
 const PaymentOrderModel = require("../models/paymentOrder")
 const ExpenseCatagoryModel = require("../models/expenseCatagore")
 const ExpenseModel= require("../models/expenseCatagore")
+const ProjectEmployeeModel =require("../models/projectEmploye")
 
 //product and project
 ProjectModel.hasMany(ProductModel, {
@@ -62,6 +63,14 @@ ProjectModel.hasMany(StockModel, {
 StockModel.belongsTo(ProjectModel, {
   foreignKey: 'projectId',
 });
+
+
+// Define the relationships project and employe
+// ProjectEmployeeModel.belongsTo(ProjectModel, { foreignKey: 'projectId' });
+// ProjectEmployeeModel.belongsTo(EmployeeModel, { foreignKey: 'employeeId' });
+
+// ProjectModel.belongsToMany(EmployeeModel, { through: ProjectEmployeeModel });
+// EmployeeModel.belongsToMany(ProjectModel, { through: ProjectEmployeeModel });
 
 // // Set up the association between PurchaseModel and ProjectModel
 PurchaseModel.belongsTo(ProjectModel, {
