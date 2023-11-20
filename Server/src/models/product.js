@@ -30,6 +30,10 @@ const ProductModel = sequelize.define("Product", {
     type: DataTypes.STRING,
     allowNull: true,
   },
+  projectId:{
+    type: DataTypes.INTEGER,
+    allowNull:false,
+  }
 });
 
 module.exports = ProductModel;
