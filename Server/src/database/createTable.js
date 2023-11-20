@@ -11,7 +11,7 @@ const PurchaseModel = require("../models/purches")
 const OrderdetailModel = require ("../models/orderdetail")
 const PaymentModel =require("../models/payment")
 const CustomerModel = require("../models/customer")
-
+const PaymentOrderModel = require("../models/paymentOrder")
 const ExpenseCatagoryModel = require("../models/expenseCatagore")
 const ExpenseModel= require("../models/expenseCatagore")
 
@@ -89,21 +89,22 @@ ProductModel.belongsTo(ProjectModel, {
 ProjectModel.hasMany(ProductModel, {
   foreignKey: "projectId",
 });
-
-// // // payment and order
-// OrderModel.belongsToMany(PaymentModel, {
-//   through: 'PaymentOrder',
-//   foreignKey: 'orderId',
-// });
+// payment and order
+PaymentModel.belongsTo(OrderModel, { foreignKey: 'orderId' });
+// // 
+OrderModel.belongsToMany(PaymentModel, {
+  through: PaymentOrderModel,
+  foreignKey: 'orderId',
+});
 
 // // //  PaymentModel and CustomerModel
 
-// CustomerModel.hasMany(PaymentModel, {
-//   // foreignKey: 'customerId',
-// });
-// PaymentModel.belongsTo(CustomerModel, {
-//   foreignKey: "customerId",
-// });
+CustomerModel.hasMany(PaymentModel, {
+  foreignKey: 'customerId',
+});
+PaymentModel.belongsTo(CustomerModel, {
+  foreignKey: "customerId",
+});
 
 //orderdetail and order
 OrderdetailModel.belongsTo(OrderModel, {

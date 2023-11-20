@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/index");
 
-const PaymentOrderModel = sequelize.define("Order", {
+const PaymentOrderModel = sequelize.define("PaymentOrder", {
   orderId: {
     type: DataTypes.INTEGER,
     allowNull: false,
