@@ -96,12 +96,18 @@ OrderModel.belongsToMany(PaymentModel, {
 });
 
 //  PaymentModel and CustomerModel
+
+CustomerModel.hasMany(PaymentModel, {
+  // foreignKey: 'customerId', 
+
+
+
+
+});
 PaymentModel.belongsTo(CustomerModel, {
   foreignKey: 'customerId',
-  onDelete: 'CASCADE', // Make sure to include this line if you didn't add it before
-});
-CustomerModel.hasMany(PaymentModel, {
-  foreignKey: 'customerId',
+  
+
 });
 
 //orderdetail and order
@@ -183,15 +189,15 @@ OrderModel.belongsTo(CustomerModel, {
 
 
 
-const createTable = async () => {
-  try {
-    await sequelize.sync({ force: true });
-    console.log("table cereated seuccessfully.");
-  } catch (error) {
-    console.error("Error creating tables:", error);
-  } finally {
-    await sequelize.close();
-  }
-};
+// const createTable = async () => {
+//   try {
+//     await sequelize.sync({ force: true });
+//     console.log("table cereated seuccessfully.");
+//   } catch (error) {
+//     console.error("Error creating tables:", error);
+//   } finally {
+//     await sequelize.close();
+//   }
+// };
 
-module.exports = createTable;
+// module.exports = createTable;
