@@ -1,16 +1,16 @@
 const sequelize = require("../database/index");
 const ProductModel = require("../models/product");
 const ProjectModel = require("../models/project");
-
+const OrderdetailProductModel = require("../models/odrerdetailProduct")
 const VehicleModel = require ("../models/vehicle");
 const EmployeeModel = require("../models/empolyee");
 // const TransferModel = require("../models/transfer");
-// const OrderModel = require ("../models/order");
+const OrderModel = require ("../models/order");
 const StockModel = require("../models/stock")
 const PurchaseModel = require("../models/purches")
-// const OrderdetailModel = require ("../models/orderdetail")
+const OrderdetailModel = require ("../models/orderdetail")
 // const PaymentModel =require("../models/payment")
-// const CustomerModel = require("../models/customer")
+const CustomerModel = require("../models/customer")
 // const OrderdetailProductModel = require("../models/orderdetailProduct")
 // const ExpenseCategoryModel = require("../models/expenseCatagore")
 // const ExpenseModel= require("../models/expenseCatagore")
@@ -105,31 +105,31 @@ ProjectModel.hasMany(ProductModel, {
 //   foreignKey: "customerId",
 // });
 
-// //orderdetail and order
-// OrderdetailModel.belongsTo(OrderModel, {
-//   foreignKey: "orderId",
-// });
+//orderdetail and order
+OrderdetailModel.belongsTo(OrderModel, {
+  foreignKey: "orderId",
+});
 
-// OrderdetailModel.belongsTo(ProductModel, {
-//   foreignKey: "productId",
-// });
+OrderdetailModel.belongsTo(ProductModel, {
+  foreignKey: "productId",
+});
 // //orderdetail and customer
-// OrderdetailModel.belongsTo(CustomerModel, {
-//   foreignKey: "customerId",
-// });
+OrderdetailModel.belongsTo(CustomerModel, {
+  foreignKey: "customerId",
+});
 // CustomerModel.hasMany(OrderdetailModel, {
 //   foreignKey: "customerId",
 // });
 // // orderdetail and product
-// OrderdetailModel.belongsToMany(ProductModel, {
-//   through: OrderdetailProductModel,
-//   foreignKey: "orderdetailId",
-// });
+OrderdetailModel.belongsToMany(ProductModel, {
+  through: OrderdetailProductModel,
+  foreignKey: "orderdetailId",
+});
 
-// ProductModel.belongsToMany(OrderdetailModel, {
-//   through: OrderdetailProductModel,
-//   foreignKey: "productId",
-// });
+ProductModel.belongsToMany(OrderdetailModel, {
+  through: OrderdetailProductModel,
+  foreignKey: "productId",
+});
 
 // // expense and project and empolyee
 // ProjectModel.hasMany(ExpenseModel, {
@@ -162,21 +162,21 @@ ProjectModel.hasMany(EmployeeModel, {
 });
 
 // //customer project and order
-// CustomerModel.belongsTo(ProjectModel, {
-//   foreignKey: 'projectId',
-// });
+CustomerModel.belongsTo(ProjectModel, {
+  foreignKey: 'projectId',
+});
 
-// ProjectModel.hasMany(CustomerModel, {
-//   foreignKey: 'projectId',
-// });
+ProjectModel.hasMany(CustomerModel, {
+  foreignKey: 'projectId',
+});
 
-// CustomerModel.hasMany(OrderModel, {
-//   foreignKey: 'customerId',
-// });
+CustomerModel.hasMany(OrderModel, {
+  foreignKey: 'customerId',
+});
 
-// OrderModel.belongsTo(CustomerModel, {
-//   foreignKey: 'customerId',
-// });
+OrderModel.belongsTo(CustomerModel, {
+  foreignKey: 'customerId',
+});
 
 const createTable = async () => {
   try {
