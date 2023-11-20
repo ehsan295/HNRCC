@@ -9,11 +9,11 @@ const OrderModel = require ("../models/order");
 const StockModel = require("../models/stock")
 const PurchaseModel = require("../models/purches")
 const OrderdetailModel = require ("../models/orderdetail")
-// const PaymentModel =require("../models/payment")
+const PaymentModel =require("../models/payment")
 const CustomerModel = require("../models/customer")
-// const OrderdetailProductModel = require("../models/orderdetailProduct")
-// const ExpenseCategoryModel = require("../models/expenseCatagore")
-// const ExpenseModel= require("../models/expenseCatagore")
+
+const ExpenseCatagoryModel = require("../models/expenseCatagore")
+const ExpenseModel= require("../models/expenseCatagore")
 
 //product and project
 ProjectModel.hasMany(ProductModel, {
@@ -91,10 +91,10 @@ ProjectModel.hasMany(ProductModel, {
 });
 
 // // // payment and order
-// // OrderModel.belongsToMany(PaymentModel, {
-// //   through: 'PaymentOrder',
-// //   foreignKey: 'orderId',
-// // });
+// OrderModel.belongsToMany(PaymentModel, {
+//   through: 'PaymentOrder',
+//   foreignKey: 'orderId',
+// });
 
 // // //  PaymentModel and CustomerModel
 
@@ -132,26 +132,26 @@ ProductModel.belongsToMany(OrderdetailModel, {
 });
 
 // // expense and project and empolyee
-// ProjectModel.hasMany(ExpenseModel, {
-//   foreignKey: "projectId",
-// });
-// ExpenseModel.belongsTo(ProjectModel, {
-//   foreignKey: "projectId",
-// });
+ProjectModel.hasMany(ExpenseModel, {
+  foreignKey: "projectId",
+});
+ExpenseModel.belongsTo(ProjectModel, {
+  foreignKey: "projectId",
+});
 
-// ExpenseCategoryModel.hasMany(ExpenseModel, {
-//   foreignKey: "expenseCategoryid",
-// });
-// ExpenseModel.belongsTo(ExpenseCategoryModel, {
-//   foreignKey: "expenseCategoryid",
-// });
+ExpenseCatagoryModel.hasMany(ExpenseModel, {
+  foreignKey: "expenseCategoryid",
+});
+ExpenseModel.belongsTo(ExpenseCatagoryModel, {
+  foreignKey: "expenseCategoryid",
+});
 
-// ExpenseModel.belongsTo(EmployeeModel, {
-//   foreignKey: "employeeId",
-// });
-// EmployeeModel.hasMany(ExpenseModel, {
-//   foreignKey: "employeeId",
-// });
+ExpenseModel.belongsTo(EmployeeModel, {
+  foreignKey: "employeeId",
+});
+EmployeeModel.hasMany(ExpenseModel, {
+  foreignKey: "employeeId",
+});
 // empolyee and project
 EmployeeModel.belongsTo(ProjectModel, {
   foreignKey: "projectId",
