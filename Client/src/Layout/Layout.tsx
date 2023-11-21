@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import axios from "axios";
-import TopNav from "@/components/crm-components/crm/top-nav";
+import TopNav from "@/components/top-nav/top-nav";
 import { Sidebar } from "@/components/crm-components/crm/sidebar";
 import Cards from "@/components/crm-components/crm/cards";
 
