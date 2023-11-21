@@ -41,10 +41,11 @@ VehicleModel.belongsTo(EmployeeModel,{
 })
 
 //transfer and vehicle
-TransferModel.belongsTo(VehicleModel, { foreignKey: 'vehicleId' });
 VehicleModel.hasMany(TransferModel,{
-  foreignKey: 'vehicleId',
+  foreignKey: 'transferId',
 })
+TransferModel.belongsTo(VehicleModel, { foreignKey: 'transferId' });
+
 
 
 // // order and transfer
@@ -163,17 +164,20 @@ EmployeeModel.hasMany(ExpenseModel, {
   foreignKey: "employeeId",
 });
 // empolyee and project
-EmployeeModel.belongsTo(ProjectModel, {
-  foreignKey: "projectId",
-});
+// EmployeeModel.hasMany(ProjectModel, {
+//   foreignKey: "employeId",
+// });
 
 ProjectModel.hasMany(EmployeeModel, {
   foreignKey: "projectId",
 });
+ProjectModel.belongsTo(EmployeeModel,{
+  foreignKey:"projectId",
+})
 
 // //customer project and order
 CustomerModel.belongsTo(ProjectModel, {
-  foreignKey: 'projectId',
+  foreignKey: 'customerId',
 });
 
 ProjectModel.hasMany(CustomerModel, {
