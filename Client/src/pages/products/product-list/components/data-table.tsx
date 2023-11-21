@@ -53,9 +53,9 @@ interface DataTableProps<TData, TValue> {
 }
 
 const formSchema = z.object({
-  code: z.string().min(2, {
-    message: "productCode must be at least 2 characters.",
-  }),
+  // code: z.string().min(2, {
+  //   message: "productCode must be at least 2 characters.",
+  // }),
   name: z.string().min(2, {
     message: "productName must be at least 2 characters.",
   }),
@@ -132,7 +132,7 @@ export function DataTable<TData, TValue>({
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="space-y-8"
               >
-                <FormField
+                {/* <FormField
                   control={form.control}
                   name="code"
                   render={({ field }) => (
@@ -142,7 +142,7 @@ export function DataTable<TData, TValue>({
                       </FormControl>
                     </FormItem>
                   )}
-                />
+                /> */}
                 <FormField
                   control={form.control}
                   name="name"

@@ -57,7 +57,7 @@ function Signup() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     axios
       .post("http://localhost:5000/api/v1/signup", values)
-      .then((res) => navigate("/sucess"))
+      .then((res) => navigate("/signin"))
       .catch((err) => console.log(err));
   }
   return (
