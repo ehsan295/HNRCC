@@ -7,10 +7,10 @@ const signinAPI = require("./signin");
 // const updateProductAPI = require("./product/updateProduct");
 // const deleteProductAPI = require("./product/deleteProduct");
 // //project
-// const createProjectAPI = require("./project/createProject");
-// const deleteProjectAPI = require("./project/deleteProject");
-// const readProjectAPI = require("./project/readProject");
-// const updateProjectAPI = require("./project/updateProject");
+const createProjectAPI = require("./project/createProject");
+const deleteProjectAPI = require("./project/deleteProject");
+const readProjectAPI = require("./project/readProject");
+const updateProjectAPI = require("./project/updateProject");
 
 // const deleteEmployeeAPI = require("./employee/deleteEmployee");
 // const createEmployeeAPI = require("./employee/createEmployee");
@@ -83,11 +83,11 @@ router.use(signinAPI);
 // router.use(readProductAPI);
 // router.use(deleteProductAPI);
 
-// //product
-// router.use(createProjectAPI);
-// router.use(updateProjectAPI);
-// router.use(readProjectAPI);
-// router.use(deleteProjectAPI);
+// project
+router.use(createProjectAPI);
+router.use(updateProjectAPI);
+router.use(readProjectAPI);
+router.use(deleteProjectAPI);
 // //کارمندان
 // router.use(createEmployeeAPI);
 // router.use(updateEmployeeAPI);

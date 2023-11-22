@@ -2,12 +2,10 @@ const express = require("express");
 const Project = require("../../models/project");
 const router = express.Router();
 
-// ... (existing routes)
-
 // Read all projects
-router.get("/projects", async (req, res) => {
+router.get("/project", async (req, res) => {
   try {
-    const projects = await Project.find();
+    const projects = await Project.findAll();
     res.json({
       projects,
     });
@@ -18,7 +16,5 @@ router.get("/projects", async (req, res) => {
     });
   }
 });
-
-// ... (existing routes)
 
 module.exports = router;

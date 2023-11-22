@@ -11,12 +11,8 @@ const ProjectModel = sequelize.define("Project", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  location: {
+  projectLocation: {
     type: DataTypes.STRING,
-    allowNull: false,
-  },
-  startDate: {
-    type: DataTypes.DATE,
     allowNull: false,
   },
 });

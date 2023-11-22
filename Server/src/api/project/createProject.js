@@ -1,34 +1,35 @@
 const express = require("express");
 const ProjectModel = require("../../models/project");
+const { where } = require("sequelize");
 
 const router = express.Router();
 
 // Create a new project
 router.post("/project", async (req, res) => {
   try {
-    const { projectId, projectName, location, startDate } = req.body;
+    const { projectName, projectLocation } = req.body;
 
-    // Check if the projectt with the given ID already exists
-    const existedProject = await ProjectModel.findOne({ projectId });
+    // Check if the project with the given ID already exists
+    const existedProject = await ProjectModel.findOne({
+      where: { projectName },
+    });
     if (existedProject) {
       return res.json({
-        message: "Product Already Exists",
+        message: "Project Already Exists",
       });
     }
 
     // Create a new project
     const newProject = new ProjectModel({
-      projectId,
       projectName,
-      location,
-      startDate,
+      projectLocation,
     });
 
-    // Save the new product
+    // Save the new prject
     const savedProject = await newProject.save();
 
     res.json({
-      message: "Product added successfully",
+      message: "Project added successfully",
       Project: savedProject,
     });
   } catch (error) {

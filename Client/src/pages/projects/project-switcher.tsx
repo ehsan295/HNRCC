@@ -1,12 +1,7 @@
-import * as React from "react";
-import {
-  CaretSortIcon,
-  CheckIcon,
-  PlusCircledIcon,
-} from "@radix-ui/react-icons";
+import React from "react";
+import { CheckIcon, PlusCircledIcon } from "@radix-ui/react-icons";
 
 import { cn } from "@/lib/utils";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   Command,
@@ -20,7 +15,6 @@ import {
 import {
   Dialog,
   DialogContent,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -49,55 +43,54 @@ const formSchema = z.object({
   projectName: z.string().min(2, {
     message: "productName must be at least 2 characters.",
   }),
-  projectLocation: z.coerce.number(),
-  unit: z.string().min(2, {
-    message: "productUnit must be at least 2 characters.",
+
+  projectLocation: z.string().min(2, {
+    message: "ProjectLocation must be at least 2 characters.",
   }),
 });
-
-const groups = [
-  {
-    label: "لیست پروژه ها",
-    teams: [
-      {
-        label: "پروژه دفتر مرکزی",
-        value: "acme-inc",
-      },
-      {
-        label: "پروژه کانال قوش تیپه.",
-        value: "monsters",
-      },
-    ],
-  },
-];
-
-type Team = (typeof groups)[number]["teams"][number];
-
+interface Data {
+  projectId: number;
+  projectName: string;
+  projectLocation: string;
+  createdAt: string;
+}
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<
   typeof PopoverTrigger
 >;
 
-interface TeamSwitcherProps extends PopoverTriggerProps {}
+interface ProjectSwitcherProps extends PopoverTriggerProps {}
 
-export default function ProjectSwicher({ className }: TeamSwitcherProps) {
+export default function ProjectSwicher({ className }: ProjectSwitcherProps) {
+  const [data, setData] = React.useState<Data[]>([]);
   const [open, setOpen] = React.useState(false);
-  const [showNewTeamDialog, setShowNewTeamDialog] = React.useState(false);
-  const [selectedTeam, setSelectedTeam] = React.useState<Team>(
-    groups[0].teams[0]
+  const [showNewProjectDialog, setShowNewProjectDialog] = React.useState(false);
+  const [selectedProject, setSelectedProject] = React.useState<Data>(
+    data[0] || <p>loading...</p>
   );
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
   function onSubmit(values: z.infer<typeof formSchema>) {
     axios
-      .post("http://localhost:5000/api/v1/product", values)
+      .post("http://localhost:5000/api/v1/project", values)
       .then((res) => console.log("sucessfully fetched", res))
       .catch((err) => console.log(err));
   }
-
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/api/v1/project"
+        ); // Update the URL accordingly
+        setData(response.data.projects);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
   return (
-    <Dialog open={showNewTeamDialog} onOpenChange={setShowNewTeamDialog}>
+    <Dialog open={showNewProjectDialog} onOpenChange={setShowNewProjectDialog}>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -107,15 +100,7 @@ export default function ProjectSwicher({ className }: TeamSwitcherProps) {
             aria-label="اضافه کردن پروژه"
             className={cn("w-[200px] justify-between", className)}
           >
-            <Avatar className="ml-2 h-5 w-5">
-              <AvatarImage
-                src={`https://avatar.vercel.sh/${selectedTeam.value}.png`}
-                alt={selectedTeam.label}
-              />
-              <AvatarFallback>SC</AvatarFallback>
-            </Avatar>
-            {selectedTeam.label}
-            <CaretSortIcon className="mr-auto h-4 w-4 shrink-0 opacity-50" />
+            {selectedProject.projectName}
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-[200px] p-0">
@@ -123,38 +108,28 @@ export default function ProjectSwicher({ className }: TeamSwitcherProps) {
             <CommandList>
               <CommandInput placeholder="جستجوی پروژه ها" className="pr-2" />
               <CommandEmpty>پروژه پیدا نشد</CommandEmpty>
-              {groups.map((group) => (
-                <CommandGroup key={group.label} heading={group.label}>
-                  {group.teams.map((team) => (
-                    <CommandItem
-                      key={team.value}
-                      onSelect={() => {
-                        setSelectedTeam(team);
-                        setOpen(false);
-                      }}
-                      className="text-sm"
-                    >
-                      <Avatar className="ml-2 h-5 w-5">
-                        <AvatarImage
-                          src={`https://avatar.vercel.sh/${team.value}.png`}
-                          alt={team.label}
-                          className="grayscale"
-                        />
-                        <AvatarFallback>SC</AvatarFallback>
-                      </Avatar>
-                      {team.label}
-                      <CheckIcon
-                        className={cn(
-                          "mr-auto h-4 w-4",
-                          selectedTeam.value === team.value
-                            ? "opacity-100"
-                            : "opacity-0"
-                        )}
-                      />
-                    </CommandItem>
-                  ))}
-                </CommandGroup>
-              ))}
+              <CommandGroup key={1} heading="لیست پروژه ها">
+                {data.map((data) => (
+                  <CommandItem
+                    key={data.projectId}
+                    onSelect={() => {
+                      setSelectedProject(data);
+                      setOpen(false);
+                    }}
+                    className="text-sm"
+                  >
+                    {data.projectName}
+                    <CheckIcon
+                      className={cn(
+                        "mr-auto h-4 w-4",
+                        selectedProject.projectName === data.projectName
+                          ? "opacity-100"
+                          : "opacity-0"
+                      )}
+                    />
+                  </CommandItem>
+                ))}
+              </CommandGroup>
             </CommandList>
             <CommandSeparator />
             <CommandList>
@@ -163,7 +138,7 @@ export default function ProjectSwicher({ className }: TeamSwitcherProps) {
                   <CommandItem
                     onSelect={() => {
                       setOpen(false);
-                      setShowNewTeamDialog(true);
+                      setShowNewProjectDialog(true);
                     }}
                   >
                     <PlusCircledIcon className="ml-2 h-5 w-5" />

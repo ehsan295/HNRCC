@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import axios from "axios";
-import TopNav from "@/components/top-nav/top-nav";
+import Projects from "../pages/projects/top-nav";
 import { Sidebar } from "@/components/crm-components/crm/sidebar";
 import Cards from "@/components/crm-components/crm/cards";
 
@@ -23,7 +23,7 @@ export default function Layout() {
   }, [accessToken]);
   return (
     <div>
-      <TopNav />
+      <Projects />
       <div className="flex">
         <Sidebar />
         <div className="flex flex-col my-6 ml-6 mr-4 w-full">
