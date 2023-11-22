@@ -132,17 +132,6 @@ export function DataTable<TData, TValue>({
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="space-y-8"
               >
-                {/* <FormField
-                  control={form.control}
-                  name="code"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input placeholder="کد محصول" {...field} />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                /> */}
                 <FormField
                   control={form.control}
                   name="name"

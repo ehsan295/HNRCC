@@ -2,10 +2,10 @@ const express = require("express");
 const signupAPI = require("./signup");
 const signinAPI = require("./signin");
 //product
-// const createProductAPI = require("./product/createProduct");
-// const readProductAPI = require("./product/readProduct");
-// const updateProductAPI = require("./product/updateProduct");
-// const deleteProductAPI = require("./product/deleteProduct");
+const createProductAPI = require("./product/createProduct");
+const readProductAPI = require("./product/readProduct");
+const updateProductAPI = require("./product/updateProduct");
+const deleteProductAPI = require("./product/deleteProduct");
 // //project
 const createProjectAPI = require("./project/createProject");
 const deleteProjectAPI = require("./project/deleteProject");
@@ -78,7 +78,7 @@ router.use(signupAPI);
 router.use(signinAPI);
 
 // //product
-// router.use(createProductAPI);
+router.use(createProductAPI);
 // router.use(updateProductAPI);
 // router.use(readProductAPI);
 // router.use(deleteProductAPI);

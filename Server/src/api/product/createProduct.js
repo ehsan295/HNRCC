@@ -6,21 +6,10 @@ const router = express.Router();
 // Create a new product
 router.post("/product", async (req, res) => {
   try {
-    const {
-      id,
-      code,
-      name,
-      unit,
-      volume,
-      price,
-      date,
-      detail,
-      picture,
-      projectId,
-    } = req.body;
+    const { name, unit, volume, price, date, detail, picture } = req.body;
 
     // Check if the product with the given ID already exists
-    const existedProduct = await Product.findOne({ id });
+    const existedProduct = await Product.findOne({ name });
     if (existedProduct) {
       return res.json({
         message: "Product Already Exists",
@@ -36,7 +25,6 @@ router.post("/product", async (req, res) => {
       date,
       detail,
       picture,
-      projectId,
     });
 
     // Save the new product
