@@ -17,19 +17,12 @@ const ProductModel = sequelize.define("Product", {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  // date: {
-  //   type: DataTypes.DATE,
-  //   allowNull: false,
-  // },
+
   detail: {
     type: DataTypes.STRING,
     allowNull: true,
   },
 
-  picture: {
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
   projectId: {
     type: DataTypes.INTEGER,
     allowNull: false,

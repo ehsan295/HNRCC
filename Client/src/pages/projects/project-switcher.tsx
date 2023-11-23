@@ -100,7 +100,9 @@ export default function ProjectSwicher({ className }: ProjectSwitcherProps) {
             aria-label="اضافه کردن پروژه"
             className={cn("w-[200px] justify-between", className)}
           >
-            {selectedProject.projectName}
+            {selectedProject.projectName
+              ? selectedProject.projectName
+              : "انتخاب پروژه"}
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-[200px] p-0">

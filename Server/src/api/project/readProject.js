@@ -1,11 +1,11 @@
 const express = require("express");
-const Project = require("../../models/project");
+const ProjectModel = require("../../models/project");
 const router = express.Router();
 
 // Read all projects
 router.get("/project", async (req, res) => {
   try {
-    const projects = await Project.findAll();
+    const projects = await ProjectModel.findAll();
     res.json({
       projects,
     });

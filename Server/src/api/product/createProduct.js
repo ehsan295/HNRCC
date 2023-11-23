@@ -1,15 +1,17 @@
 const express = require("express");
-const Product = require("../../models/product");
+const ProjectModel = require("../../models/project");
+const ProductModel = require("../../models/product");
 
 const router = express.Router();
 
 // Create a new product
 router.post("/product", async (req, res) => {
   try {
-    const { name, unit, volume, price, date, detail, picture } = req.body;
+    // Move the declaration and initialization of projectId before using it
+    const { name, unit, volume, price, date, detail, projectId } = req.body;
 
-    // Check if the product with the given ID already exists
-    const existedProduct = await Product.findOne({ name });
+    // Check if the product with the given name already exists
+    const existedProduct = await ProductModel.findOne({ where: { name } });
     if (existedProduct) {
       return res.json({
         message: "Product Already Exists",
@@ -17,14 +19,14 @@ router.post("/product", async (req, res) => {
     }
 
     // Create a new product
-    const newProduct = new Product({
+    const newProduct = new ProductModel({
       name,
       unit,
       volume,
       price,
       date,
       detail,
-      picture,
+      projectId,
     });
 
     // Save the new product

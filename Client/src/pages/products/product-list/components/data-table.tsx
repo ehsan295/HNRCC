@@ -68,7 +68,12 @@ const formSchema = z.object({
     message: "productDetail must be at least 2 characters.",
   }),
 });
-
+interface ProjectData {
+  projectId: number;
+  projectName: string;
+  projectLocation: string;
+  createdAt: string;
+}
 export function DataTable<TData, TValue>({
   columns,
   data,
@@ -80,6 +85,7 @@ export function DataTable<TData, TValue>({
     []
   );
   const [sorting, setSorting] = React.useState<SortingState>([]);
+  const [projectData, setProjectData] = React.useState<ProjectData[]>([]);
   const table = useReactTable({
     data,
     columns,
@@ -105,9 +111,24 @@ export function DataTable<TData, TValue>({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/api/v1/project"
+        ); // Update the URL accordingly
+        setProjectData(response.data.projects.projectId[0]);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
   function onSubmit(values: z.infer<typeof formSchema>) {
+    const submitData = { ...values, projectData };
+    console.log(submitData);
     axios
-      .post("http://localhost:5000/api/v1/product", values)
+      .post("http://localhost:5000/api/v1/product", submitData)
       .then((res) => console.log("sucessfully fetched", res))
       .catch((err) => console.log(err));
   }
