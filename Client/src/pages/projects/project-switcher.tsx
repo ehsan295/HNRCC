@@ -38,6 +38,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const formSchema = z.object({
   projectName: z.string().min(2, {
@@ -81,7 +82,7 @@ export default function ProjectSwicher({ className }: ProjectSwitcherProps) {
       try {
         const response = await axios.get(
           "http://localhost:5000/api/v1/project"
-        ); // Update the URL accordingly
+        );
         setData(response.data.projects);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -89,6 +90,7 @@ export default function ProjectSwicher({ className }: ProjectSwitcherProps) {
     };
     fetchData();
   }, []);
+  const projectID = data;
   return (
     <Dialog open={showNewProjectDialog} onOpenChange={setShowNewProjectDialog}>
       <Popover open={open} onOpenChange={setOpen}>
@@ -112,24 +114,26 @@ export default function ProjectSwicher({ className }: ProjectSwitcherProps) {
               <CommandEmpty>پروژه پیدا نشد</CommandEmpty>
               <CommandGroup key={1} heading="لیست پروژه ها">
                 {data.map((data) => (
-                  <CommandItem
-                    key={data.projectId}
-                    onSelect={() => {
-                      setSelectedProject(data);
-                      setOpen(false);
-                    }}
-                    className="text-sm"
-                  >
-                    {data.projectName}
-                    <CheckIcon
-                      className={cn(
-                        "mr-auto h-4 w-4",
-                        selectedProject.projectName === data.projectName
-                          ? "opacity-100"
-                          : "opacity-0"
-                      )}
-                    />
-                  </CommandItem>
+                  <Link to="/">
+                    <CommandItem
+                      key={data.projectId}
+                      onSelect={() => {
+                        setSelectedProject(data);
+                        setOpen(false);
+                      }}
+                      className="text-sm"
+                    >
+                      {data.projectName}
+                      <CheckIcon
+                        className={cn(
+                          "mr-auto h-4 w-4",
+                          selectedProject.projectName === data.projectName
+                            ? "opacity-100"
+                            : "opacity-0"
+                        )}
+                      />
+                    </CommandItem>
+                  </Link>
                 ))}
               </CommandGroup>
             </CommandList>
